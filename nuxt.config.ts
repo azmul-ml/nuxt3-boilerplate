@@ -14,6 +14,23 @@ export default defineNuxtConfig({
       },
     },
   },
+  plugins: [
+    '~/plugins/pinia-plugin-persist.client'
+  ],
+  modules: [
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: [
+          'defineStore',
+          ['defineStore', 'definePiniaStore']
+        ],
+      },
+    ],
+  ],
+  imports: {
+    dirs: ['stores'],
+  },
   runtimeConfig: {
     public: {
       baseUrl: process.env.API_BASE_URL,
