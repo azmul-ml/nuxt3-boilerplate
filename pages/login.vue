@@ -14,6 +14,8 @@ const loginForm = reactive<authType.LoginParamsType>({
   password: null,
 });
 
+const localePath = useLocalePath();
+
 async function submit() {
   if (isLoginLoading.value) return;
   try {
@@ -21,7 +23,7 @@ async function submit() {
     const res = await authApi.loginUser(loginForm);
     if (res?.token) {
       auth.value.token = res.token;
-      navigateTo("/");
+      navigateTo(localePath("/"));
     }
   } catch (err) {
     console.log(err);

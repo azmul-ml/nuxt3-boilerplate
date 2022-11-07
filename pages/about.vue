@@ -9,5 +9,5 @@ useHead({
 </script>
 
 <template>
-  <div>About Page</div>
+  <div>{{ $t("pageTitle.about") }}</div>
 </template>

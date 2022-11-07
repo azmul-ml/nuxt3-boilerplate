@@ -17,7 +17,7 @@ function incrementCount() {
 <template>
   <div>
     <LazyHomeWelcome />
-    <h3>Home Page</h3>
+    <h3>{{ $t("pageTitle.home") }}</h3>
     <Counter />
     <br />
     <div>

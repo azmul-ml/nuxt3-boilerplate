@@ -1,4 +1,5 @@
 <script setup>
+const localePath = useLocalePath();
 definePageMeta({
   layout: false,
   middleware: ["auth"],
@@ -7,7 +8,7 @@ definePageMeta({
 
 <template>
   <div>
-    <NuxtLink to="/"> &lt; Go Home Page</NuxtLink>
-    <h1>Azmul Hossain Profile</h1>
+    <NuxtLink :to="localePath('/')"> &lt; Go Home Page</NuxtLink>
+    <h1>{{ $t("pageTitle.profile") }}</h1>
   </div>
 </template>

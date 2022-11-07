@@ -18,7 +18,7 @@ store.setUsers(data);
 
 <template>
   <div style="margin: 20px">
-    <h1>All Users</h1>
+    <h1>{{ $t("pageTitle.users") }}</h1>
     <UserDetails class="mb-2" :users="store.users" />
     <a-button type="primary" @click="navigateTo('/user/create')"
       >Create User</a-button
