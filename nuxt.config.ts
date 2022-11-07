@@ -1,4 +1,7 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+import Components from "unplugin-vue-components/vite";
+import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
+
 export default defineNuxtConfig({
   css: ["assets/css/tailwind.css"],
   meta: {
@@ -14,26 +17,29 @@ export default defineNuxtConfig({
       },
     },
   },
-  plugins: [
-    '~/plugins/pinia-plugin-persist.client'
-  ],
+  plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     [
-      '@pinia/nuxt',
+      "@pinia/nuxt",
       {
-        autoImports: [
-          'defineStore',
-          ['defineStore', 'definePiniaStore']
-        ],
+        autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],
       },
     ],
   ],
   imports: {
-    dirs: ['stores'],
+    dirs: ["stores"],
   },
   runtimeConfig: {
     public: {
       baseUrl: process.env.API_BASE_URL,
-    }
+    },
+  },
+  vite: {
+    plugins: [
+      /* ... */
+      Components({
+        resolvers: [AntDesignVueResolver()],
+      }),
+    ],
   },
 });
