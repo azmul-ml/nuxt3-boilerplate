@@ -1,17 +1,3 @@
-<style>
-nav {
-  padding: 10px 0;
-}
-nav a {
-  margin-right: 10px;
-}
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>
-
 <script setup lang="ts">
 const auth = useAuth();
 
@@ -33,6 +19,20 @@ function logout() {
         >Register</NuxtLink
       >
     </nav>
-    <a-button v-if="auth.token" @click="logout" class="pr-8">Logout</a-button>
+    <a-button v-if="auth.token" class="pr-8" @click="logout">Logout</a-button>
   </div>
 </template>
+
+<style>
+nav {
+  padding: 10px 0;
+}
+nav a {
+  margin-right: 10px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>

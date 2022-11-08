@@ -1,3 +1,4 @@
-export const useAuth = () => useState(() => ({
-    token: null
-}));
+export const useAuth = () =>
+  useState(() => ({
+    token: null,
+  }));

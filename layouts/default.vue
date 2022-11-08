@@ -1,9 +1,3 @@
-<style>
-.container {
-  padding: 20px;
-}
-</style>
-
 <template>
   <div class="container">
     <Header />
@@ -11,3 +5,9 @@
     <Footer />
   </div>
 </template>
+
+<style>
+.container {
+  padding: 20px;
+}
+</style>

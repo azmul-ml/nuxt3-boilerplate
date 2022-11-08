@@ -8,7 +8,7 @@ export interface UserState {
 const state = (): UserState => ({ users: [] });
 
 const getters = {
-  getUsers: (state):userType.UserType[] => state.users,
+  getUsers: (state): userType.UserType[] => state.users,
 };
 
 const actions = {

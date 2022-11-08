@@ -1,51 +1,49 @@
-import { $fetch, FetchOptions } from 'ohmyfetch'
+import { $fetch, FetchOptions } from "ohmyfetch";
 
 const useApiHandler = (url: string, payload?: FetchOptions) => {
   const config = useRuntimeConfig();
 
   const options: FetchOptions = {
     headers: {
-      Accept: 'application/json',
-      'Cache-Control': 'no-cache'
+      Accept: "application/json",
+      "Cache-Control": "no-cache",
     },
-   ...payload
-  }
+    ...payload,
+  };
 
   return $fetch(`${config.baseUrl}${url}`, {
     ...options,
-    async onResponse({ request, response, options }) {
-      console.log('[fetch response]')
+    async onResponse({}) {
+      // {request, response, options}
     },
-    async onResponseError({ request, response, options }) {
-      console.log('[fetch response error]')
+    async onResponseError({}) {
+      // { request, response, options }
     },
-
-    async onRequest({ request, options }) {
-      console.log('[fetch request]')
+    async onRequest({}) {
+      // { request, options }
     },
-    async onRequestError({ request, options, error }) {
-      console.log('[fetch request error]')
-    }
-  })
-}
-
+    async onRequestError({}) {
+      // { request, options, error }
+    },
+  });
+};
 
 export const useGet = (url: string, options?: FetchOptions) => {
-    return useApiHandler(url, options)
-}
+  return useApiHandler(url, options);
+};
 
 export const usePost = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: 'POST', body: {...payload} })
-}
+  return useApiHandler(url, { method: "POST", body: { ...payload } });
+};
 
 export const usePut = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: 'PUT', body: {...payload} })
-}
+  return useApiHandler(url, { method: "PUT", body: { ...payload } });
+};
 
 export const usePatch = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: 'PATCH', body: {...payload} })
-}
+  return useApiHandler(url, { method: "PATCH", body: { ...payload } });
+};
 
 export const useDelete = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: 'DELETE', body: {...payload} })
-}
+  return useApiHandler(url, { method: "DELETE", body: { ...payload } });
+};

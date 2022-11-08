@@ -1,17 +1,3 @@
-<style>
-form {
-  width: 300px;
-}
-
-.form input {
-  margin-bottom: 12px;
-}
-
-.form button {
-  margin-bottom: 12px;
-}
-</style>
-
 <script setup lang="ts">
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
@@ -47,12 +33,12 @@ async function submit() {
     }
   </pre
     >
-    <a-form @finish="submit" class="form">
+    <a-form class="form" @finish="submit">
       <label>
         Enter your email:
         <a-input
-          type="text"
           v-model:value="registerForm.email"
+          type="text"
           placeholder="Enter Email"
         />
       </label>
@@ -60,8 +46,8 @@ async function submit() {
       <label>
         Enter your password:
         <a-input
-          type="text"
           v-model:value="registerForm.password"
+          type="text"
           placeholder="Enter Password"
         />
       </label>
@@ -79,3 +65,17 @@ async function submit() {
     </a-form>
   </div>
 </template>
+
+<style>
+form {
+  width: 300px;
+}
+
+.form input {
+  margin-bottom: 12px;
+}
+
+.form button {
+  margin-bottom: 12px;
+}
+</style>

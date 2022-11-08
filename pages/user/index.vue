@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import * as userApi from "~/api/userApi";
-import * as userType from "~/types/userType";
 
 useHead({
   title: "User List",
@@ -12,9 +11,7 @@ definePageMeta({
 
 const store = useUsersStore();
 
-const { data, pending, error, refresh } = await useAsyncData("users", () =>
-  userApi.fetchUsers()
-);
+const { data } = await useAsyncData("users", () => userApi.fetchUsers());
 
 store.setUsers(data);
 </script>
@@ -23,7 +20,7 @@ store.setUsers(data);
   <div style="margin: 20px">
     <h1>All Users</h1>
     <UserDetails class="mb-2" :users="store.users" />
-    <a-button @click="navigateTo('/user/create')" type="primary"
+    <a-button type="primary" @click="navigateTo('/user/create')"
       >Create User</a-button
     >
   </div>

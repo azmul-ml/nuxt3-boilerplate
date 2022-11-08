@@ -1,15 +1,14 @@
 <script setup>
-  function logSomeError(err) {
-    console.log(err);
-  }
+function logSomeError(err) {
+  console.log(err);
+}
 </script>
 
-
 <template>
-    <NuxtErrorBoundary @error="logSomeError">
+  <NuxtErrorBoundary @error="logSomeError">
     <NuxtLayout>
       <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
-    </NuxtErrorBoundary>
-  </template>
+  </NuxtErrorBoundary>
+</template>

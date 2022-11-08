@@ -25,7 +25,7 @@ export const registerUser = async (
  * @param {email, password} user email, password
  * @returns {token}
  */
- export const loginUser = async (
+export const loginUser = async (
   payload: authType.LoginParamsType
 ): Promise<authType.LoginResponseType> => {
   try {

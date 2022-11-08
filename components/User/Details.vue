@@ -1,11 +1,12 @@
 <script setup>
-const props = defineProps(["users"]);
-const { users } = props;
+const props = defineProps({
+  users: { type: Object, required: true },
+});
 </script>
 
 <template>
   <div>
-    <a-list item-layout="horizontal" :data-source="users">
+    <a-list item-layout="horizontal" :data-source="props.users">
       <template #renderItem="{ item }">
         <a-list-item>
           <a-list-item-meta

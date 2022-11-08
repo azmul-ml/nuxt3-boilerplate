@@ -1,9 +1,3 @@
-<style>
-.form input {
-  margin-bottom: 12px;
-}
-</style>
-
 <script setup lang="ts">
 import * as userApi from "~/api/userApi";
 import * as userType from "~/types/userType";
@@ -41,12 +35,12 @@ async function submit() {
 <template>
   <div>
     <h1>Create User</h1>
-    <a-form @finish="submit" class="form">
+    <a-form class="form" @finish="submit">
       <label>
         Enter your email:
         <a-input
-          type="text"
           v-model:value="userForm.email"
+          type="text"
           placeholder="Enter Email"
         />
       </label>
@@ -54,8 +48,8 @@ async function submit() {
       <label>
         Enter your First Name:
         <a-input
-          type="text"
           v-model:value="userForm.first_name"
+          type="text"
           placeholder="Enter first_name"
         />
       </label>
@@ -63,8 +57,8 @@ async function submit() {
       <label>
         Enter your Last Name:
         <a-input
-          type="text"
           v-model:value="userForm.last_name"
+          type="text"
           placeholder="Enter last_name"
         />
       </label>
@@ -72,8 +66,8 @@ async function submit() {
       <label>
         Enter your avatar:
         <a-input
-          type="text"
           v-model:value="userForm.avatar"
+          type="text"
           placeholder="Enter avatar"
         />
       </label>
@@ -91,3 +85,9 @@ async function submit() {
     </a-form>
   </div>
 </template>
+
+<style>
+.form input {
+  margin-bottom: 12px;
+}
+</style>

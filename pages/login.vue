@@ -2,6 +2,10 @@
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
 
+useHead({
+  title: "Login Page",
+});
+
 const isLoginLoading = ref<boolean>(false);
 const auth = useAuth();
 
@@ -37,15 +41,15 @@ async function submit() {
     }
   </pre
     >
-    <a-form @finish="submit" class="form" :model="loginForm">
+    <a-form class="form" :model="loginForm" @finish="submit">
       <a-form-item
         label="Email"
         name="email"
         :rules="[{ required: true, message: 'Please input your email!' }]"
       >
         <a-input
-          type="email"
           v-model:value="loginForm.email"
+          type="email"
           placeholder="Enter Email"
         />
       </a-form-item>
@@ -56,8 +60,8 @@ async function submit() {
         :rules="[{ required: true, message: 'Please input your password!' }]"
       >
         <a-input
-          type="text"
           v-model:value="loginForm.password"
+          type="text"
           placeholder="Enter Password"
         />
       </a-form-item>

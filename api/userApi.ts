@@ -39,9 +39,7 @@ export const createUser = async (
  * @param {id} user id
  * @returns {id, email, first_name, last_name, avatar}
  */
- export const getUserById = async (
-  id: string
-): Promise<userType.UserType> => {
+export const getUserById = async (id: string): Promise<userType.UserType> => {
   console.log(id);
   try {
     const res = await api.useGet(Endpoints.USERS + "/" + id);
@@ -57,7 +55,7 @@ export const createUser = async (
  * @param {email, first_name, last_name, avatar} user id, email, first_name, last_name, avatar
  * @returns {id, email, first_name, last_name, avatar}
  */
- export const updateUser = async (
+export const updateUser = async (
   id: string,
   payload: userType.CreateUserType
 ): Promise<userType.UserType> => {

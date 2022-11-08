@@ -24,9 +24,9 @@ function incrementCount() {
       {{ store.name }}
       {{ store.count }}
       <a-button
-        @click="incrementCount"
         class="bg-blue-500 text-white font-bold py-1 px-2"
         type="primary"
+        @click="incrementCount"
       >
         Increment Store Count
       </a-button>
