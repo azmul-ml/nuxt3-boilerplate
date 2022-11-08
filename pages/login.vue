@@ -1,17 +1,3 @@
-<style>
-/* form {
-  width: 300px;
-}
-
-.form input {
-  margin-bottom: 12px;
-} */
-
-/* .form button {
-  margin-bottom: 12px;
-} */
-</style>
-
 <script setup lang="ts">
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";

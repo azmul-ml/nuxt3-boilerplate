@@ -1,7 +1,7 @@
 /** User Register Params Type */
 export type RegisterParamsType = {
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 };
 
 /** User Register Sucessfull Response Type */
@@ -15,5 +15,5 @@ export type LoginParamsType = RegisterParamsType;
 
 /** User Login Sucessfull Response Type */
 export type LoginResponseType = {
-  token: string;
+  token: string | null;
 };
