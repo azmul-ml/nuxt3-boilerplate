@@ -3,7 +3,6 @@ import Components from "unplugin-vue-components/vite";
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
 export default defineNuxtConfig({
-  css: ["assets/css/tailwind.css"],
   meta: {
     title: "Nuxt3 course",
   },

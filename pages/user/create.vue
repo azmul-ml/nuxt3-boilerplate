@@ -1,3 +1,9 @@
+<style>
+.form input {
+  margin-bottom: 12px;
+}
+</style>
+
 <script setup lang="ts">
 import * as userApi from "~/api/userApi";
 import * as userType from "~/types/userType";
@@ -35,47 +41,52 @@ async function submit() {
 <template>
   <div>
     <h1>Create User</h1>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="form">
       <label>
         Enter your email:
-        <input type="text" v-model="userForm.email" placeholder="Enter Email" />
+        <a-input
+          type="text"
+          v-model:value="userForm.email"
+          placeholder="Enter Email"
+        />
       </label>
       <br />
       <label>
         Enter your First Name:
-        <input
+        <a-input
           type="text"
-          v-model="userForm.first_name"
+          v-model:value="userForm.first_name"
           placeholder="Enter first_name"
         />
       </label>
       <br />
       <label>
         Enter your Last Name:
-        <input
+        <a-input
           type="text"
-          v-model="userForm.last_name"
+          v-model:value="userForm.last_name"
           placeholder="Enter last_name"
         />
       </label>
       <br />
       <label>
         Enter your avatar:
-        <input
+        <a-input
           type="text"
-          v-model="userForm.avatar"
+          v-model:value="userForm.avatar"
           placeholder="Enter avatar"
         />
       </label>
       <br />
-      <button
+      <a-button
         :disabled="isUserCreateLoading"
         class="bg-blue-500 text-white font-bold py-2 px-4"
-        type="submit"
+        type="primary"
+        @click.prevent="submit"
       >
         <span v-if="isUserCreateLoading">Loading...</span>
         <span v-else>Submit</span>
-      </button>
+      </a-button>
     </form>
   </div>
 </template>

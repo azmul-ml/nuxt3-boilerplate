@@ -23,12 +23,13 @@ function incrementCount() {
     <div>
       {{ store.name }}
       {{ store.count }}
-      <button
+      <a-button
         @click="incrementCount"
         class="bg-blue-500 text-white font-bold py-1 px-2"
+        type="primary"
       >
         Increment Store Count
-      </button>
+      </a-button>
     </div>
   </div>
 </template>

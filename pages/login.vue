@@ -1,3 +1,17 @@
+<style>
+form {
+  width: 300px;
+}
+
+.form input {
+  margin-bottom: 12px;
+}
+
+.form button {
+  margin-bottom: 12px;
+}
+</style>
+
 <script setup lang="ts">
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
@@ -15,9 +29,9 @@ async function submit() {
   try {
     isLoginLoading.value = true;
     const res = await authApi.loginUser(loginForm);
-    if(res?.token) {
-        auth.value.token = res.token;
-        navigateTo("/");
+    if (res?.token) {
+      auth.value.token = res.token;
+      navigateTo("/");
     }
   } catch (err) {
     console.log(err);
@@ -37,28 +51,33 @@ async function submit() {
     }
   </pre
     >
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="form">
       <label>
         Email:
-        <input
+        <a-input
           type="text"
-          v-model="loginForm.email"
+          v-model:value="loginForm.email"
           placeholder="Enter Email"
         />
       </label>
       <br />
       <label>
         Password:
-        <input
+        <a-input
           type="text"
-          v-model="loginForm.password"
+          v-model:value="loginForm.password"
           placeholder="Enter Password"
         />
       </label>
       <br />
-      <button :disabled="isLoginLoading" class="bg-blue-500 text-white py-1 px-2 mt-4" type="submit">
+      <a-button
+        :disabled="isLoginLoading"
+        class="bg-blue-500 text-white py-1 px-2 mt-4"
+        type="primary"
+        @click.prevent="submit"
+      >
         <span v-if="isLoginLoading">Loading...</span> <span v-else>Submit</span>
-      </button>
+      </a-button>
     </form>
   </div>
 </template>

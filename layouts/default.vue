@@ -1,5 +1,11 @@
+<style>
+.container {
+  padding: 20px;
+}
+</style>
+
 <template>
-  <div>
+  <div class="container">
     <Header />
     <slot></slot>
     <Footer />
