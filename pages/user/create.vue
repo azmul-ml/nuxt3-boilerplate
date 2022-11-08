@@ -41,7 +41,7 @@ async function submit() {
 <template>
   <div>
     <h1>Create User</h1>
-    <form @submit.prevent="submit" class="form">
+    <a-form @finish="submit" class="form">
       <label>
         Enter your email:
         <a-input
@@ -82,11 +82,12 @@ async function submit() {
         :disabled="isUserCreateLoading"
         class="bg-blue-500 text-white font-bold py-2 px-4"
         type="primary"
+        html-type="submit"
         @click.prevent="submit"
       >
         <span v-if="isUserCreateLoading">Loading...</span>
         <span v-else>Submit</span>
       </a-button>
-    </form>
+    </a-form>
   </div>
 </template>

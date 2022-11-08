@@ -1,15 +1,15 @@
 <style>
-form {
+/* form {
   width: 300px;
 }
 
 .form input {
   margin-bottom: 12px;
-}
+} */
 
-.form button {
+/* .form button {
   margin-bottom: 12px;
-}
+} */
 </style>
 
 <script setup lang="ts">
@@ -51,33 +51,40 @@ async function submit() {
     }
   </pre
     >
-    <form @submit.prevent="submit" class="form">
-      <label>
-        Email:
+    <a-form @finish="submit" class="form" :model="loginForm">
+      <a-form-item
+        label="Email"
+        name="email"
+        :rules="[{ required: true, message: 'Please input your email!' }]"
+      >
         <a-input
-          type="text"
+          type="email"
           v-model:value="loginForm.email"
           placeholder="Enter Email"
         />
-      </label>
-      <br />
-      <label>
-        Password:
+      </a-form-item>
+
+      <a-form-item
+        label="Password"
+        name="password"
+        :rules="[{ required: true, message: 'Please input your password!' }]"
+      >
         <a-input
           type="text"
           v-model:value="loginForm.password"
           placeholder="Enter Password"
         />
-      </label>
-      <br />
+      </a-form-item>
+
       <a-button
         :disabled="isLoginLoading"
         class="bg-blue-500 text-white py-1 px-2 mt-4"
         type="primary"
+        html-type="submit"
         @click.prevent="submit"
       >
         <span v-if="isLoginLoading">Loading...</span> <span v-else>Submit</span>
       </a-button>
-    </form>
+    </a-form>
   </div>
 </template>
