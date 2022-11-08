@@ -1,0 +1,17 @@
+{
+  "links": {
+    "about": "About",
+    "home": "Home",
+    "users": "Users",
+    "profile": "Profile",
+    "logout": "Logout",
+    "register": "Register",
+    "login": "Login"
+  },
+  "pageTitle": {
+    "home": "Home Page",
+    "about": "About Page",
+    "users": "All Users",
+    "profile": "Profile Page"
+  }
+}

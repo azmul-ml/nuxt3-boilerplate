@@ -3,6 +3,7 @@ import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
 
 const isRegisterLoading = ref<boolean>(false);
+const localePath = useLocalePath();
 
 const registerForm = reactive<authType.RegisterParamsType>({
   email: null,
@@ -14,7 +15,7 @@ async function submit() {
   try {
     isRegisterLoading.value = true;
     await authApi.registerUser(registerForm);
-    navigateTo("/login");
+    navigateTo(localePath("/login"));
   } catch (err) {
     console.log(err);
   } finally {

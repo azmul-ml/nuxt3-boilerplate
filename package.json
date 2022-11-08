@@ -38,6 +38,7 @@
     "vitest": "^0.25.0"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "^8.0.0-beta.3",
     "@pinia/nuxt": "^0.4.3",
     "add": "^2.0.6",
     "ant-design-vue": "^3.2.13",
