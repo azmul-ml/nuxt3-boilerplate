@@ -1,8 +1,19 @@
 <template>
   <div>
-    <button class="bg-blue-500 text-white font-bold py-1 px-2" @click="increment">Increment</button>
+    <a-button
+      type="primary"
+      class="bg-blue-500 text-white font-bold py-1 px-2"
+      @click="increment"
+    >
+      Increment
+    </a-button>
     <div>{{ count }}</div>
-    <button class="bg-blue-500 text-white font-bold py-1 px-2" @click="deccrement">Decrement</button>
+    <a-button
+      type="primary"
+      class="bg-blue-500 text-white font-bold py-1 px-2"
+      @click="deccrement"
+      >Decrement</a-button
+    >
   </div>
 </template>
 
