@@ -24,9 +24,9 @@ function onChange(value: string) {
       <NuxtLink v-if="auth.token" :to="localePath('/user')" class="pr-8">{{
         $t("links.users")
       }}</NuxtLink>
-      <NuxtLink v-if="auth.token" :to="localePath('/about')" class="pr-8">{{
-        $t("links.about")
-      }}</NuxtLink>
+      <NuxtLink v-if="auth.token" :to="localePath('/about')" class="pr-8">
+        {{ $t("links.about") }}
+      </NuxtLink>
       <NuxtLink v-if="auth.token" :to="localePath('/profile')" class="pr-8">{{
         $t("links.profile")
       }}</NuxtLink>
@@ -37,16 +37,20 @@ function onChange(value: string) {
         $t("links.register")
       }}</NuxtLink>
     </nav>
-    <a-button v-if="auth.token" class="pr-8" @click="logout">{{ $t("links.logout") }}</a-button>
-    <select
-      v-model="selectedValue"
-      @change="onChange(selectedValue)"
-      class="bg-blue-500"
-    >
-      <option v-for="item in locales" :key="item.code" :value="item.code">
-        {{ item.name }}
-      </option>
-    </select>
+    <a-space>
+      <a-button v-if="auth.token" class="pr-8" @click="logout">{{
+        $t("links.logout")
+      }}</a-button>
+      <a-select v-model:value="selectedValue" @change="onChange(selectedValue)">
+        <a-select-option
+          v-for="item in locales"
+          :key="item.code"
+          :value="item.code"
+        >
+          {{ item.name }}
+        </a-select-option>
+      </a-select>
+    </a-space>
   </div>
 </template>
 
