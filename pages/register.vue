@@ -2,6 +2,10 @@
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
 
+definePageMeta({
+  layout: "public",
+});
+
 const isRegisterLoading = ref<boolean>(false);
 const localePath = useLocalePath();
 

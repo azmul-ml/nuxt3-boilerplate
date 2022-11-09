@@ -6,19 +6,7 @@ import ar from "./locales/ar.json";
 import bn from "./locales/bn-BD.json";
 
 export default defineNuxtConfig({
-  meta: {
-    title: "Nuxt3 course",
-  },
-  build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    },
-  },
+  build: {},
   plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     "@nuxtjs/i18n",

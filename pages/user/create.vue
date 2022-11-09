@@ -12,6 +12,8 @@ definePageMeta({
   middleware: ["auth"],
 });
 
+const localePath = useLocalePath();
+
 const userForm = reactive<userType.CreateUserType>({
   email: null,
   first_name: null,
@@ -24,6 +26,7 @@ async function submit() {
   try {
     isUserCreateLoading.value = true;
     await userApi.createUser(userForm);
+    navigateTo(localePath("/user"));
   } catch (err) {
     console.log(err);
   } finally {

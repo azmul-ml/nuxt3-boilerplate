@@ -8,11 +8,11 @@ export interface UserState {
 const state = (): UserState => ({ users: [] });
 
 const getters = {
-  getUsers: (state): userType.UserType[] => state.users,
+  getUsers: (state: UserState) => state.users,
 };
 
 const actions = {
-  setUsers(data) {
+  setUsers(data: userType.UserType[]) {
     this.users = data;
   },
 };

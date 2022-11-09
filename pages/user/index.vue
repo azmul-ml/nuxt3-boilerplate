@@ -9,17 +9,16 @@ definePageMeta({
   middleware: ["auth"],
 });
 
-const store = useUsersStore();
+const userStore = useUsersStore();
 
 const { data } = await useAsyncData("users", () => userApi.fetchUsers());
-
-store.setUsers(data);
+userStore.setUsers(data);
 </script>
 
 <template>
   <div style="margin: 20px">
     <h1>{{ $t("pageTitle.users") }}</h1>
-    <UserDetails class="mb-2" :users="store.users" />
+    <UserDetails class="mb-2" :users="userStore.users" />
     <a-button type="primary" @click="navigateTo('/user/create')"
       >Create User</a-button
     >

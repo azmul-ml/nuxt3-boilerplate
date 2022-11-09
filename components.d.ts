@@ -15,6 +15,9 @@ declare module "@vue/runtime-core" {
     AList: typeof import("ant-design-vue/es")["List"];
     AListItem: typeof import("ant-design-vue/es")["ListItem"];
     AListItemMeta: typeof import("ant-design-vue/es")["ListItemMeta"];
+    ASelect: typeof import("ant-design-vue/es")["Select"];
+    ASelectOption: typeof import("ant-design-vue/es")["SelectOption"];
+    ASpace: typeof import("ant-design-vue/es")["Space"];
     RouterLink: typeof import("vue-router")["RouterLink"];
     RouterView: typeof import("vue-router")["RouterView"];
   }

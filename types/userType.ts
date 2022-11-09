@@ -9,8 +9,8 @@ export type UserType = {
 
 /** Create User Type */
 export type CreateUserType = {
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
+  email: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  avatar: string | null;
 };

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const auth = useAuth();
+const authStore = useAuthStore();
 const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
 const selectedValue = ref(locale);
 
 function logout() {
-  auth.value.token = null;
+  authStore.setToken(null);
   navigateTo(localePath("/login"));
 }
 
@@ -18,27 +18,24 @@ function onChange(value: string) {
 <template>
   <div class="header">
     <nav>
-      <NuxtLink v-if="auth.token" :to="localePath('/')" class="pr-8">{{
+      <NuxtLink v-if="authStore.token" :to="localePath('/')" class="pr-8">{{
         $t("links.home")
       }}</NuxtLink>
-      <NuxtLink v-if="auth.token" :to="localePath('/user')" class="pr-8">{{
+      <NuxtLink v-if="authStore.token" :to="localePath('/user')" class="pr-8">{{
         $t("links.users")
       }}</NuxtLink>
-      <NuxtLink v-if="auth.token" :to="localePath('/about')" class="pr-8">
+      <NuxtLink v-if="authStore.token" :to="localePath('/about')" class="pr-8">
         {{ $t("links.about") }}
       </NuxtLink>
-      <NuxtLink v-if="auth.token" :to="localePath('/profile')" class="pr-8">{{
-        $t("links.profile")
-      }}</NuxtLink>
-      <NuxtLink v-if="!auth.token" :to="localePath('/login')" class="pr-8">{{
-        $t("links.login")
-      }}</NuxtLink>
-      <NuxtLink v-if="!auth.token" :to="localePath('/register')" class="pr-8">{{
-        $t("links.register")
-      }}</NuxtLink>
+      <NuxtLink
+        v-if="authStore.token"
+        :to="localePath('/profile')"
+        class="pr-8"
+        >{{ $t("links.profile") }}</NuxtLink
+      >
     </nav>
     <a-space>
-      <a-button v-if="auth.token" class="pr-8" @click="logout">{{
+      <a-button v-if="authStore.token" class="pr-8" @click="logout">{{
         $t("links.logout")
       }}</a-button>
       <a-select v-model:value="selectedValue" @change="onChange(selectedValue)">
