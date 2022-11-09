@@ -22,7 +22,6 @@
     "ant-design-vue": "^3.2.13",
     "axios": "^1.1.3",
     "ohmyfetch": "^0.4.20",
-    "pinia": "^2.0.23",
     "pinia-plugin-persist": "^1.0.0",
     "query-string": "^7.1.1",
     "yarn": "^1.22.19"

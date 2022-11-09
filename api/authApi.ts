@@ -1,4 +1,4 @@
-import * as api from "~/composables/api";
+// import * as api from "~/composables/api";
 import { Endpoints } from "~/api/apiConstant";
 import * as authType from "~/types/authType";
 
@@ -12,7 +12,7 @@ export const registerUser = async (
   payload: authType.RegisterParamsType
 ): Promise<authType.RegisterResponseType> => {
   try {
-    const res = await api.usePost(Endpoints.AUTH_REGISTER, payload);
+    const res = await usePost(Endpoints.AUTH_REGISTER, payload);
     return res;
   } catch (err) {
     return err;
@@ -25,11 +25,11 @@ export const registerUser = async (
  * @param {email, password} user email, password
  * @returns {token}
  */
- export const loginUser = async (
+export const loginUser = async (
   payload: authType.LoginParamsType
 ): Promise<authType.LoginResponseType> => {
   try {
-    const res = await api.usePost(Endpoints.AUTH_LOGIN, payload);
+    const res = await usePost(Endpoints.AUTH_LOGIN, payload);
     return res;
   } catch (err) {
     return err;

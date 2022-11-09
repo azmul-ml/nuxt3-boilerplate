@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import * as authApi from "~/api/authApi";
+import { storeToRefs } from "pinia";
+
 import * as authType from "~/types/authType";
+
+const authStore = useAuthStore();
+const { isLoading, isLoggedIn } = storeToRefs(authStore);
+const { userLogin } = authStore;
 
 const isLoginLoading = ref<boolean>(false);
 const auth = useAuth();
@@ -14,10 +19,9 @@ async function submit() {
   if (isLoginLoading.value) return;
   try {
     isLoginLoading.value = true;
-    const res = await authApi.loginUser(loginForm);
-    if(res?.token) {
-        auth.value.token = res.token;
-        navigateTo("/");
+    const { token } = await userLogin(loginForm);
+    if (token) {
+      auth.value.token = token;
     }
   } catch (err) {
     console.log(err);
@@ -56,8 +60,12 @@ async function submit() {
         />
       </label>
       <br />
-      <button :disabled="isLoginLoading" class="bg-blue-500 text-white py-1 px-2 mt-4" type="submit">
-        <span v-if="isLoginLoading">Loading...</span> <span v-else>Submit</span>
+      <button
+        :disabled="isLoading"
+        class="bg-blue-500 text-white py-1 px-2 mt-4"
+        type="submit"
+      >
+        <span v-if="isLoading">Loading...</span> <span v-else>Submit</span>
       </button>
     </form>
   </div>

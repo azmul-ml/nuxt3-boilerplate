@@ -1,4 +1,4 @@
-import * as api from "~/composables/api";
+import * as api from "~~/helpers/api";
 import { Endpoints } from "~/api/apiConstant";
 import * as userType from "~/types/userType";
 
@@ -39,10 +39,7 @@ export const createUser = async (
  * @param {id} user id
  * @returns {id, email, first_name, last_name, avatar}
  */
- export const getUserById = async (
-  id: string
-): Promise<userType.UserType> => {
-  console.log(id);
+export const getUserById = async (id: string): Promise<userType.UserType> => {
   try {
     const res = await api.useGet(Endpoints.USERS + "/" + id);
     return res.data;
@@ -57,7 +54,7 @@ export const createUser = async (
  * @param {email, first_name, last_name, avatar} user id, email, first_name, last_name, avatar
  * @returns {id, email, first_name, last_name, avatar}
  */
- export const updateUser = async (
+export const updateUser = async (
   id: string,
   payload: userType.CreateUserType
 ): Promise<userType.UserType> => {

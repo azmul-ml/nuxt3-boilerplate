@@ -14,26 +14,22 @@ export default defineNuxtConfig({
       },
     },
   },
-  plugins: [
-    '~/plugins/pinia-plugin-persist.client'
-  ],
+  plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     [
-      '@pinia/nuxt',
+      "@pinia/nuxt",
       {
         autoImports: [
-          'defineStore',
-          ['defineStore', 'definePiniaStore']
+          "defineStore",
+          ["defineStore", "definePiniaStore", "acceptHMRUpdate"],
         ],
       },
     ],
   ],
   imports: {
-    dirs: ['stores'],
+    dirs: ["stores", "helpers"],
   },
-  runtimeConfig: {
-    public: {
-      baseUrl: process.env.API_BASE_URL,
-    }
+  publicRuntimeConfig: {
+    baseURL: process.env.API_BASE_URL || "https://reqres.in",
   },
 });
