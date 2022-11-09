@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import * as userApi from "~/api/userApi";
-import * as userType from "~/types/userType";
+import { storeToRefs } from "pinia";
 
 useHead({
   title: "User List",
@@ -10,18 +9,17 @@ definePageMeta({
   middleware: ["auth"],
 });
 
-const userStore = useUsersStore();
-
-const { data } = await useAsyncData<userType.UserType[] | null>("users", () =>
-  userApi.fetchUsers()
-);
-userStore.setUsers(data);
+const { users, loading, error } = storeToRefs(useUsersStore());
+const { fetchUsers } = useUsersStore();
+fetchUsers();
 </script>
 
 <template>
   <div style="margin: 20px">
     <h1>{{ $t("pageTitle.users") }}</h1>
-    <UserDetails class="mb-2" :users="userStore.users" />
+    <p v-if="loading">Loading posts...</p>
+    <p v-if="error">{{ error.message }}</p>
+    <UserDetails class="mb-2" :users="users" />
     <a-button type="primary" @click="navigateTo('/user/create')"
       >Create User</a-button
     >
