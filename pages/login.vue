@@ -6,8 +6,12 @@ useHead({
   title: "Login Page",
 });
 
+definePageMeta({
+  layout: "public",
+});
+
 const isLoginLoading = ref<boolean>(false);
-const auth = useAuth();
+const authStore = useAuthStore();
 
 const loginForm = reactive<authType.LoginParamsType>({
   email: null,
@@ -22,7 +26,7 @@ async function submit() {
     isLoginLoading.value = true;
     const res = await authApi.loginUser(loginForm);
     if (res?.token) {
-      auth.value.token = res.token;
+      authStore.setToken(res.token);
       navigateTo(localePath("/"));
     }
   } catch (err) {
