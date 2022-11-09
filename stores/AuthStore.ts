@@ -4,22 +4,18 @@ export interface AuthState {
   token: string | null;
 }
 
-const state = (): AuthState => ({ token: null });
-
-const getters = {
-  getToken: (state: AuthState) => state.token,
-};
-
-const actions = {
-  setToken(token: string | null): void {
-    this.token = token;
-  },
-};
-
 export const useAuthStore = defineStore("AuthStore", {
-  state,
-  getters,
-  actions,
+  state: (): AuthState => ({
+    token: null,
+  }),
+  getters: {
+    getToken: (state: AuthState) => state.token,
+  },
+  actions: {
+    setToken(token: string | null): void {
+      this.token = token;
+    },
+  },
   persist: {
     enabled: true,
     strategies: [],
