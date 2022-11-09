@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import * as userApi from "~/api/userApi";
+import * as userType from "~/types/userType";
 
 useHead({
   title: "User List",
@@ -11,7 +12,9 @@ definePageMeta({
 
 const userStore = useUsersStore();
 
-const { data } = await useAsyncData("users", () => userApi.fetchUsers());
+const { data } = await useAsyncData<userType.UserType[] | null>("users", () =>
+  userApi.fetchUsers()
+);
 userStore.setUsers(data);
 </script>
 

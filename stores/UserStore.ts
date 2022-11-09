@@ -5,22 +5,18 @@ export interface UserState {
   users: userType.UserType[] | undefined[];
 }
 
-const state = (): UserState => ({ users: [] });
-
-const getters = {
-  getUsers: (state: UserState) => state.users,
-};
-
-const actions = {
-  setUsers(data: userType.UserType[]) {
-    this.users = data;
-  },
-};
-
 export const useUsersStore = defineStore("UsersStore", {
-  state,
-  getters,
-  actions,
+  state: (): UserState => ({
+    users: [],
+  }),
+  getters: {
+    getUsers: (state: UserState) => state.users,
+  },
+  actions: {
+    setUsers(data: userType.UserType[]) {
+      this.users = data;
+    },
+  },
   persist: {
     enabled: true,
     strategies: [],
