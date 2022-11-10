@@ -13,7 +13,7 @@ const props = defineProps({
             description="Ant Design, a design language for background applications, is refined by Ant UED Team"
           >
             <template #title>
-              <NuxtLink :to="`/user/${item.id}`">
+              <NuxtLink :to="`/user/${item.id}`" class="dmsans-regular">
                 {{ item.first_name }} {{ item.last_name }}
               </NuxtLink>
             </template>
@@ -26,3 +26,7 @@ const props = defineProps({
     </a-list>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import "styles";
+</style>
