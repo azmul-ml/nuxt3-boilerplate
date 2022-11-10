@@ -1,4 +1,3 @@
-// import * as api from "~/composables/api";
 import { Endpoints } from "~/api/apiConstant";
 import * as authType from "~/types/authType";
 
