@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <PrivateHeader />
+    <PublicHeader />
     <slot></slot>
     <Footer />
   </div>

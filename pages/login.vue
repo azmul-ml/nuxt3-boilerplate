@@ -6,27 +6,30 @@ import * as authType from "~/types/authType";
 const authStore = useAuthStore();
 const { isLoading, isLoggedIn } = storeToRefs(authStore);
 const { userLogin } = authStore;
+useHead({
+  title: "Login Page",
+});
 
-const isLoginLoading = ref<boolean>(false);
-const auth = useAuth();
+definePageMeta({
+  layout: "public",
+});
 
 const loginForm = reactive<authType.LoginParamsType>({
   email: null,
   password: null,
 });
 
+const localePath = useLocalePath();
+
 async function submit() {
-  if (isLoginLoading.value) return;
+  if (isLoading.value) return;
   try {
-    isLoginLoading.value = true;
-    const { token } = await userLogin(loginForm);
-    if (token) {
-      auth.value.token = token;
-    }
+    isLoading.value = true;
+    await userLogin(loginForm);
   } catch (err) {
     console.log(err);
   } finally {
-    isLoginLoading.value = false;
+    isLoading.value = false;
   }
 }
 </script>
@@ -41,32 +44,40 @@ async function submit() {
     }
   </pre
     >
-    <form @submit.prevent="submit">
-      <label>
-        Email:
-        <input
-          type="text"
-          v-model="loginForm.email"
+    <a-form class="form" :model="loginForm" @finish="submit">
+      <a-form-item
+        label="Email"
+        name="email"
+        :rules="[{ required: true, message: 'Please input your email!' }]"
+      >
+        <a-input
+          v-model:value="loginForm.email"
+          type="email"
           placeholder="Enter Email"
         />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
+      </a-form-item>
+
+      <a-form-item
+        label="Password"
+        name="password"
+        :rules="[{ required: true, message: 'Please input your password!' }]"
+      >
+        <a-input
+          v-model:value="loginForm.password"
           type="text"
-          v-model="loginForm.password"
           placeholder="Enter Password"
         />
-      </label>
-      <br />
-      <button
+      </a-form-item>
+
+      <a-button
         :disabled="isLoading"
         class="bg-blue-500 text-white py-1 px-2 mt-4"
-        type="submit"
+        type="primary"
+        html-type="submit"
+        @click.prevent="submit"
       >
         <span v-if="isLoading">Loading...</span> <span v-else>Submit</span>
-      </button>
-    </form>
+      </a-button>
+    </a-form>
   </div>
 </template>

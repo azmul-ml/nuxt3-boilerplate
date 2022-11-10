@@ -1,7 +1,7 @@
 import { Endpoints } from "./../api/apiConstant";
 import * as authType from "~/types/authType";
 
-import { defineStore, acceptHMRUpdate } from "pinia";
+import { loginUser } from "~~/api/authApi";
 
 export const useAuthStore = defineStore("auth", () => {
   /**
@@ -10,21 +10,17 @@ export const useAuthStore = defineStore("auth", () => {
   const isLoading = ref(false);
   const isLoggedIn = ref(false);
 
-  const { baseURL } = useRuntimeConfig();
   const router = useRouter();
   /**
    * initialize state from local storage to enable user to stay logged in
    */
-  const token = useCookie<{ name: string }>("token");
+  const token = useCookie<string | null>("token");
 
   const userLogin = async (
     payload: authType.LoginParamsType
   ): Promise<authType.LoginResponseType> => {
     isLoading.value = true;
-    const response = await usePost(
-      `${baseURL}/${Endpoints.AUTH_LOGIN}`,
-      payload
-    );
+    const response = await loginUser(payload);
 
     /**
      * store auth details and jwt in local storage to keep user logged in

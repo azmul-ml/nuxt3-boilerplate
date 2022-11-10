@@ -12,6 +12,8 @@ definePageMeta({
   middleware: ["auth"],
 });
 
+const localePath = useLocalePath();
+
 const userForm = reactive<userType.CreateUserType>({
   email: null,
   first_name: null,
@@ -24,6 +26,7 @@ async function submit() {
   try {
     isUserCreateLoading.value = true;
     await userApi.createUser(userForm);
+    navigateTo(localePath("/user"));
   } catch (err) {
     console.log(err);
   } finally {
@@ -35,47 +38,59 @@ async function submit() {
 <template>
   <div>
     <h1>Create User</h1>
-    <form @submit.prevent="submit">
+    <a-form class="form" @finish="submit">
       <label>
         Enter your email:
-        <input type="text" v-model="userForm.email" placeholder="Enter Email" />
+        <a-input
+          v-model:value="userForm.email"
+          type="text"
+          placeholder="Enter Email"
+        />
       </label>
       <br />
       <label>
         Enter your First Name:
-        <input
+        <a-input
+          v-model:value="userForm.first_name"
           type="text"
-          v-model="userForm.first_name"
           placeholder="Enter first_name"
         />
       </label>
       <br />
       <label>
         Enter your Last Name:
-        <input
+        <a-input
+          v-model:value="userForm.last_name"
           type="text"
-          v-model="userForm.last_name"
           placeholder="Enter last_name"
         />
       </label>
       <br />
       <label>
         Enter your avatar:
-        <input
+        <a-input
+          v-model:value="userForm.avatar"
           type="text"
-          v-model="userForm.avatar"
           placeholder="Enter avatar"
         />
       </label>
       <br />
-      <button
+      <a-button
         :disabled="isUserCreateLoading"
         class="bg-blue-500 text-white font-bold py-2 px-4"
-        type="submit"
+        type="primary"
+        html-type="submit"
+        @click.prevent="submit"
       >
         <span v-if="isUserCreateLoading">Loading...</span>
         <span v-else>Submit</span>
-      </button>
-    </form>
+      </a-button>
+    </a-form>
   </div>
 </template>
+
+<style>
+.form input {
+  margin-bottom: 12px;
+}
+</style>

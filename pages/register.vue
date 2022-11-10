@@ -2,7 +2,12 @@
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
 
+definePageMeta({
+  layout: "public",
+});
+
 const isRegisterLoading = ref<boolean>(false);
+const localePath = useLocalePath();
 
 const registerForm = reactive<authType.RegisterParamsType>({
   email: null,
@@ -14,7 +19,7 @@ async function submit() {
   try {
     isRegisterLoading.value = true;
     await authApi.registerUser(registerForm);
-    navigateTo("/login");
+    navigateTo(localePath("/login"));
   } catch (err) {
     console.log(err);
   } finally {
@@ -33,33 +38,49 @@ async function submit() {
     }
   </pre
     >
-    <form @submit.prevent="submit">
+    <a-form class="form" @finish="submit">
       <label>
         Enter your email:
-        <input
+        <a-input
+          v-model:value="registerForm.email"
           type="text"
-          v-model="registerForm.email"
           placeholder="Enter Email"
         />
       </label>
       <br />
       <label>
         Enter your password:
-        <input
+        <a-input
+          v-model:value="registerForm.password"
           type="text"
-          v-model="registerForm.password"
           placeholder="Enter Password"
         />
       </label>
       <br />
-      <button
+      <a-button
         :disabled="isRegisterLoading"
         class="bg-blue-500 text-white py-1 px-2 mt-4"
-        type="submit"
+        type="primary"
+        html-type="submit"
+        @click.prevent="submit"
       >
         <span v-if="isRegisterLoading">Loading...</span>
         <span v-else>Submit</span>
-      </button>
-    </form>
+      </a-button>
+    </a-form>
   </div>
 </template>
+
+<style>
+form {
+  width: 300px;
+}
+
+.form input {
+  margin-bottom: 12px;
+}
+
+.form button {
+  margin-bottom: 12px;
+}
+</style>

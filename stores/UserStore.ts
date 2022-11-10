@@ -1,28 +1,36 @@
-import { defineStore } from "pinia";
 import * as userType from "~/types/userType";
+import * as userApi from "~/api/userApi";
 
 export interface UserState {
   users: userType.UserType[] | undefined[];
+  loading: boolean;
+  error: any;
 }
 
-const state = (): UserState => ({ users: [] });
+export const useUsersStore = defineStore("UsersStore", () => {
+  const userState = reactive({ users: [] as userType.UserType[] });
+  const loading = ref(false);
+  const errorState = ref<any>(null);
 
-const getters = {
-  getUsers: (state):userType.UserType[] => state.users,
-};
+  const setUsers = (data: userType.UserType[]) => {
+    userState.users = data;
+  };
+  const fetchUsers = async () => {
+    userState.users = [];
+    loading.value = true;
 
-const actions = {
-  setUsers(data) {
-    this.users = data;
-  },
-};
+    try {
+      userState.users = await userApi.fetchUsers();
+    } catch (error: any) {
+      errorState.value = error;
+    } finally {
+      loading.value = false;
+    }
+  };
 
-export const useUsersStore = defineStore("UsersStore", {
-  state,
-  getters,
-  actions,
-  persist: {
-    enabled: true,
-    strategies: [],
-  },
+  return { userState, loading, errorState, fetchUsers, setUsers };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useCounterStore, import.meta.hot));
+}

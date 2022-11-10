@@ -14,9 +14,9 @@ const AUTH_LOGIN = VERSION_URL + "/login";
  * @enum {string}
  */
 export const Endpoints = Object.freeze({
-    USERS: USERS,
-    AUTH_REGISTER: AUTH_REGISTER,
-    AUTH_LOGIN: AUTH_LOGIN,
+  USERS: USERS,
+  AUTH_REGISTER: AUTH_REGISTER,
+  AUTH_LOGIN: AUTH_LOGIN,
 });
 
 /**

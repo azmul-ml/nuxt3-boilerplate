@@ -13,12 +13,9 @@ definePageMeta({
   middleware: ["auth"],
 });
 
-const {
-  data: user,
-  pending,
-  error,
-  refresh,
-} = await useLazyAsyncData(`/users/${route.params.id}`, () => userApi.getUserById(route.params.id));
+const { data: user } = await useLazyAsyncData(`/users/${route.params.id}`, () =>
+  userApi.getUserById(route.params.id)
+);
 
 async function submit() {
   if (isUserUpdateLoading.value) return;
@@ -36,17 +33,17 @@ async function submit() {
 <template>
   <div>
     User {{ id }}
-     <form v-if="user" @submit.prevent="submit">
+    <form v-if="user" @submit.prevent="submit">
       <label>
         Enter your email:
-        <input type="text" v-model="user.email" placeholder="Enter Email" />
+        <input v-model="user.email" type="text" placeholder="Enter Email" />
       </label>
       <br />
       <label>
         Enter your First Name:
         <input
-          type="text"
           v-model="user.first_name"
+          type="text"
           placeholder="Enter first_name"
         />
       </label>
@@ -54,19 +51,15 @@ async function submit() {
       <label>
         Enter your Last Name:
         <input
-          type="text"
           v-model="user.last_name"
+          type="text"
           placeholder="Enter last_name"
         />
       </label>
       <br />
       <label>
         Enter your avatar:
-        <input
-          type="text"
-          v-model="user.avatar"
-          placeholder="Enter avatar"
-        />
+        <input v-model="user.avatar" type="text" placeholder="Enter avatar" />
       </label>
       <br />
       <button
@@ -78,6 +71,5 @@ async function submit() {
         <span v-else>Submit</span>
       </button>
     </form>
-
   </div>
 </template>

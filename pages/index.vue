@@ -17,18 +17,19 @@ function incrementCount() {
 <template>
   <div>
     <LazyHomeWelcome />
-    <h3>Home Page</h3>
+    <h3>{{ $t("pageTitle.home") }}</h3>
     <Counter />
     <br />
     <div>
       {{ store.name }}
       {{ store.count }}
-      <button
-        @click="incrementCount"
+      <a-button
         class="bg-blue-500 text-white font-bold py-1 px-2"
+        type="primary"
+        @click="incrementCount"
       >
         Increment Store Count
-      </button>
+      </a-button>
     </div>
   </div>
 </template>

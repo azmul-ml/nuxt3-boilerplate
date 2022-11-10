@@ -4,11 +4,10 @@ definePageMeta({
   middleware: ["auth"],
 });
 useHead({
-    title: "About Page"
-})
+  title: "About Page",
+});
 </script>
 
 <template>
-  <div>About Page </div>
+  <div>{{ $t("pageTitle.about") }}</div>
 </template>
-

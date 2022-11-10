@@ -4,7 +4,6 @@ import { storeToRefs } from "pinia";
 const { logout } = useAuthStore();
 const { isLoggedIn } = storeToRefs(useAuthStore());
 
-console.log(isLoggedIn);
 const handleLogout = async () => {
   await logout();
 };
@@ -18,6 +17,6 @@ const handleLogout = async () => {
     <NuxtLink v-if="isLoggedIn" to="/profile" class="pr-8">Profile</NuxtLink>
     <NuxtLink v-if="!isLoggedIn" to="/login" class="pr-8">Login</NuxtLink>
     <NuxtLink v-if="!isLoggedIn" to="/register" class="pr-8">Register</NuxtLink>
-    <button v-if="isLoggedIn" @click="handleLogout" class="pr-8">Logout</button>
+    <button v-if="isLoggedIn" class="pr-8" @click="handleLogout">Logout</button>
   </nav>
 </template>

@@ -11,7 +11,7 @@ const useApiHandler = (url: string, payload?: FetchOptions) => {
     ...payload,
   };
 
-  return $fetch(`${url}`, {
+  return $fetch(`${baseURL}${url}`, {
     ...options,
     async onResponse({ request, response, options }) {
       console.log("[fetch response]");
