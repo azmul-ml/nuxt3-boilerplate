@@ -1,7 +1,7 @@
 import { $fetch, FetchOptions } from "ohmyfetch";
 
 const useApiHandler = (url: string, payload?: FetchOptions) => {
-  const config = useRuntimeConfig();
+  const { baseURL } = useRuntimeConfig();
 
   const options: FetchOptions = {
     headers: {
@@ -11,19 +11,20 @@ const useApiHandler = (url: string, payload?: FetchOptions) => {
     ...payload,
   };
 
-  return $fetch(`${config.baseUrl}${url}`, {
+  return $fetch(`${baseURL}${url}`, {
     ...options,
-    async onResponse({}) {
-      // {request, response, options}
+    async onResponse({ request, response, options }) {
+      console.log("[fetch response]");
     },
-    async onResponseError({}) {
-      // { request, response, options }
+    async onResponseError({ request, response, options }) {
+      console.log("[fetch response error]");
     },
-    async onRequest({}) {
-      // { request, options }
+
+    async onRequest({ request, options }) {
+      console.log("[fetch request]");
     },
-    async onRequestError({}) {
-      // { request, options, error }
+    async onRequestError({ request, options, error }) {
+      console.log("[fetch request error]");
     },
   });
 };

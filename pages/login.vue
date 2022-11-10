@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import * as authApi from "~/api/authApi";
+import { storeToRefs } from "pinia";
+
 import * as authType from "~/types/authType";
 
+const authStore = useAuthStore();
+const { isLoading, isLoggedIn } = storeToRefs(authStore);
+const { userLogin } = authStore;
 useHead({
   title: "Login Page",
 });
@@ -9,9 +13,6 @@ useHead({
 definePageMeta({
   layout: "public",
 });
-
-const isLoginLoading = ref<boolean>(false);
-const authStore = useAuthStore();
 
 const loginForm = reactive<authType.LoginParamsType>({
   email: null,
@@ -21,18 +22,14 @@ const loginForm = reactive<authType.LoginParamsType>({
 const localePath = useLocalePath();
 
 async function submit() {
-  if (isLoginLoading.value) return;
+  if (isLoading.value) return;
   try {
-    isLoginLoading.value = true;
-    const res = await authApi.loginUser(loginForm);
-    if (res?.token) {
-      authStore.setToken(res.token);
-      navigateTo(localePath("/"));
-    }
+    isLoading.value = true;
+    await userLogin(loginForm);
   } catch (err) {
     console.log(err);
   } finally {
-    isLoginLoading.value = false;
+    isLoading.value = false;
   }
 }
 </script>
@@ -73,13 +70,13 @@ async function submit() {
       </a-form-item>
 
       <a-button
-        :disabled="isLoginLoading"
+        :disabled="isLoading"
         class="bg-blue-500 text-white py-1 px-2 mt-4"
         type="primary"
         html-type="submit"
         @click.prevent="submit"
       >
-        <span v-if="isLoginLoading">Loading...</span> <span v-else>Submit</span>
+        <span v-if="isLoading">Loading...</span> <span v-else>Submit</span>
       </a-button>
     </a-form>
   </div>

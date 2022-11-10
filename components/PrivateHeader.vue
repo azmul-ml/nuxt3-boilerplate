@@ -4,11 +4,7 @@ const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
 const selectedValue = ref(locale);
-
-function logout() {
-  authStore.setToken(null);
-  navigateTo(localePath("/login"));
-}
+const { logout } = useAuthStore();
 
 function onChange(value: string) {
   navigateTo(switchLocalePath(value));

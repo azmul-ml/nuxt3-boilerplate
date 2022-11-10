@@ -13,12 +13,15 @@ export default defineNuxtConfig({
     [
       "@pinia/nuxt",
       {
-        autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],
+        autoImports: ["defineStore", "definePiniaStore", "acceptHMRUpdate"],
       },
     ],
   ],
   imports: {
-    dirs: ["stores"],
+    dirs: ["stores", "helpers"],
+  },
+  publicRuntimeConfig: {
+    baseURL: process.env.API_BASE_URL || "https://reqres.in",
   },
   runtimeConfig: {
     public: {

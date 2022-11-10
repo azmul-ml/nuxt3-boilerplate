@@ -1,4 +1,3 @@
-import { defineStore } from "pinia";
 import * as userType from "~/types/userType";
 import * as userApi from "~/api/userApi";
 
@@ -8,34 +7,30 @@ export interface UserState {
   error: any;
 }
 
-export const useUsersStore = defineStore("UsersStore", {
-  state: (): UserState => ({
-    users: [],
-    loading: false,
-    error: null,
-  }),
-  getters: {
-    getUsers: (state: UserState) => state.users,
-  },
-  actions: {
-    setUsers(data: userType.UserType[]) {
-      this.users = data;
-    },
-    async fetchUsers() {
-      this.users = [];
-      this.loading = true;
+export const useUsersStore = defineStore("UsersStore", () => {
+  const userState = reactive({ users: [] as userType.UserType[] });
+  const loading = ref(false);
+  const errorState = ref<any>(null);
 
-      try {
-        this.users = await userApi.fetchUsers();
-      } catch (error) {
-        this.error = error;
-      } finally {
-        this.loading = false;
-      }
-    },
-  },
-  persist: {
-    enabled: true,
-    strategies: [],
-  },
+  const setUsers = (data: userType.UserType[]) => {
+    userState.users = data;
+  };
+  const fetchUsers = async () => {
+    userState.users = [];
+    loading.value = true;
+
+    try {
+      userState.users = await userApi.fetchUsers();
+    } catch (error: any) {
+      errorState.value = error;
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  return { userState, loading, errorState, fetchUsers, setUsers };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useCounterStore, import.meta.hot));
+}
