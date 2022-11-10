@@ -12,10 +12,10 @@ function onChange(value: string) {
 <template>
   <div class="header">
     <nav>
-      <NuxtLink :to="localePath('/login')" class="pr-8">{{
+      <NuxtLink :to="localePath('/login')" class="color-dogerBlue">{{
         $t("links.login")
       }}</NuxtLink>
-      <NuxtLink :to="localePath('/register')" class="pr-8">{{
+      <NuxtLink :to="localePath('/register')" class="color-dogerBlue">{{
         $t("links.register")
       }}</NuxtLink>
     </nav>

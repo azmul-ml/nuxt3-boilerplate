@@ -7,6 +7,7 @@ import bn from "./locales/bn-BD.json";
 
 export default defineNuxtConfig({
   build: {},
+  css: ["~/assets/sass/main.scss"],
   plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     "@nuxtjs/i18n",
