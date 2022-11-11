@@ -1,35 +1,16 @@
 <script setup>
 useHead({
-  title: "Nuxt Boilerplate",
+  title: 'Nuxt Boilerplate',
 });
 
 definePageMeta({
-  middleware: ["auth"],
+  middleware: ['auth'],
 });
-
-const store = useCounterStore();
-
-function incrementCount() {
-  store.increment();
-}
 </script>
 
 <template>
   <div>
     <LazyHomeWelcome />
-    <h3>{{ $t("pageTitle.home") }}</h3>
-    <Counter />
-    <br />
-    <div>
-      {{ store.name }}
-      {{ store.count }}
-      <a-button
-        class="bg-blue-500 text-white font-bold py-1 px-2"
-        type="primary"
-        @click="incrementCount"
-      >
-        Increment Store Count
-      </a-button>
-    </div>
+    <h3>{{ $t('pageTitle.home') }}</h3>
   </div>
 </template>

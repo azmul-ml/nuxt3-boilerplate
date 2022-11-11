@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
+import { storeToRefs } from 'pinia';
 
 const { logout } = useAuthStore();
 const { isLoggedIn } = storeToRefs(useAuthStore());
 
 const handleLogout = async () => {
-  await logout();
+  logout();
 };
 </script>
 

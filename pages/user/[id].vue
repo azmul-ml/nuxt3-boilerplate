@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as userApi from "~/api/userApi";
+import * as userApi from '~/api/userApi';
 
 const route = useRoute();
 const id = computed(() => route.params.id);
@@ -10,18 +10,17 @@ useHead({
 });
 
 definePageMeta({
-  middleware: ["auth"],
+  middleware: ['auth'],
 });
 
-const { data: user } = await useLazyAsyncData(`/users/${route.params.id}`, () =>
-  userApi.getUserById(route.params.id)
-);
+const { data: user } = await useLazyAsyncData(`/users/${route.params.id}`, () => userApi.getUserById(route.params.id));
 
 async function submit() {
   if (isUserUpdateLoading.value) return;
   try {
     isUserUpdateLoading.value = true;
     await userApi.updateUser(route.params.id, user.value);
+    navigateTo('/user');
   } catch (err) {
     console.log(err);
   } finally {
@@ -32,41 +31,31 @@ async function submit() {
 
 <template>
   <div>
-    User {{ id }}
+    <h2>User {{ id }}</h2>
     <form v-if="user" @submit.prevent="submit">
-      <label>
-        Enter your email:
-        <input v-model="user.email" type="text" placeholder="Enter Email" />
-      </label>
-      <br />
-      <label>
-        Enter your First Name:
+      <div class="form-group">
+        <label for="exampleInputEmail1">Enter your email:</label>
         <input
-          v-model="user.first_name"
-          type="text"
-          placeholder="Enter first_name"
+          v-model="user.email"
+          type="email"
+          class="form-control"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
         />
-      </label>
-      <br />
-      <label>
-        Enter your Last Name:
-        <input
-          v-model="user.last_name"
-          type="text"
-          placeholder="Enter last_name"
-        />
-      </label>
-      <br />
-      <label>
-        Enter your avatar:
-        <input v-model="user.avatar" type="text" placeholder="Enter avatar" />
-      </label>
-      <br />
-      <button
-        :disabled="isUserUpdateLoading"
-        class="bg-blue-500 text-white font-bold py-2 px-2"
-        type="submit"
-      >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFirstName"> Enter your First Name: :</label>
+        <input v-model="user.first_name" type="text" class="form-control" placeholder="Enter first_name" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFirstName"> Enter your Last Name: :</label>
+        <input v-model="user.last_name" type="text" class="form-control" placeholder="Enter last_name" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFirstName"> Enter your avatar :</label>
+        <input v-model="user.avatar" type="text" class="form-control" placeholder="Enter avatar" />
+      </div>
+      <button :disabled="isUserUpdateLoading" type="submit" class="btn btn-primary">
         <span v-if="isUserUpdateLoading">Submitting...</span>
         <span v-else>Submit</span>
       </button>

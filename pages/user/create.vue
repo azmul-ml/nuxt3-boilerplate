@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import * as userApi from "~/api/userApi";
-import * as userType from "~/types/userType";
+import * as userApi from '~/api/userApi';
+import * as userType from '~/types/userType';
 
 const isUserCreateLoading = ref<boolean>(false);
 
 useHead({
-  title: "Create User",
+  title: 'Create User',
 });
 
 definePageMeta({
-  middleware: ["auth"],
+  middleware: ['auth'],
 });
 
 const localePath = useLocalePath();
@@ -26,7 +26,7 @@ async function submit() {
   try {
     isUserCreateLoading.value = true;
     await userApi.createUser(userForm);
-    navigateTo(localePath("/user"));
+    navigateTo(localePath('/user'));
   } catch (err) {
     console.log(err);
   } finally {
@@ -38,59 +38,27 @@ async function submit() {
 <template>
   <div>
     <h1>Create User</h1>
-    <a-form class="form" @finish="submit">
-      <label>
-        Enter your email:
-        <a-input
-          v-model:value="userForm.email"
-          type="text"
-          placeholder="Enter Email"
-        />
-      </label>
-      <br />
-      <label>
-        Enter your First Name:
-        <a-input
-          v-model:value="userForm.first_name"
-          type="text"
-          placeholder="Enter first_name"
-        />
-      </label>
-      <br />
-      <label>
-        Enter your Last Name:
-        <a-input
-          v-model:value="userForm.last_name"
-          type="text"
-          placeholder="Enter last_name"
-        />
-      </label>
-      <br />
-      <label>
-        Enter your avatar:
-        <a-input
-          v-model:value="userForm.avatar"
-          type="text"
-          placeholder="Enter avatar"
-        />
-      </label>
-      <br />
-      <a-button
-        :disabled="isUserCreateLoading"
-        class="bg-blue-500 text-white font-bold py-2 px-4"
-        type="primary"
-        html-type="submit"
-        @click.prevent="submit"
-      >
+    <form class="form" @finish="submit">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email:</label>
+        <input v-model="userForm.email" type="email" class="form-control" placeholder="Enter email" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFirstName">First Name:</label>
+        <input v-model="userForm.first_name" type="text" class="form-control" placeholder="Enter First Name" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputSecondName">Last Name:</label>
+        <input v-model="userForm.last_name" type="text" class="form-control" placeholder="Enter Last Name" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFirstName">Email Avatar:</label>
+        <input v-model="userForm.avatar" type="text" class="form-control" placeholder="Enter Avatar" />
+      </div>
+      <button :disabled="isUserCreateLoading" class="btn btn-primary" type="button" @click.prevent="submit">
         <span v-if="isUserCreateLoading">Loading...</span>
         <span v-else>Submit</span>
-      </a-button>
-    </a-form>
+      </button>
+    </form>
   </div>
 </template>
-
-<style>
-.form input {
-  margin-bottom: 12px;
-}
-</style>
