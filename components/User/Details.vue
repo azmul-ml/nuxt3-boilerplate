@@ -5,28 +5,20 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
-    <a-list item-layout="horizontal" :data-source="props.users">
-      <template #renderItem="{ item }">
-        <a-list-item>
-          <a-list-item-meta
-            description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-          >
-            <template #title>
-              <NuxtLink :to="`/user/${item.id}`" class="dmsans-regular">
-                {{ item.first_name }} {{ item.last_name }}
-              </NuxtLink>
-            </template>
-            <template #avatar>
-              <a-avatar :src="item.avatar" />
-            </template>
-          </a-list-item-meta>
-        </a-list-item>
-      </template>
-    </a-list>
+  <div v-for="user in props.users" :key="user.id" class="list-group">
+    <a class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">
+          <NuxtLink :to="`/user/${user?.id}`" class="dmsans-regular">
+            {{ user?.first_name }} {{ user?.last_name }}
+          </NuxtLink>
+        </h5>
+        <small>{{ user.id }} days ago</small>
+      </div>
+    </a>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "styles";
+@import 'styles';
 </style>

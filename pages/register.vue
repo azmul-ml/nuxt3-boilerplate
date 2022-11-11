@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import * as authApi from "~/api/authApi";
-import * as authType from "~/types/authType";
+import * as authApi from '~/api/authApi';
+import * as authType from '~/types/authType';
 
 definePageMeta({
-  layout: "public",
+  layout: 'public',
 });
 
 const isRegisterLoading = ref<boolean>(false);
@@ -19,7 +19,7 @@ async function submit() {
   try {
     isRegisterLoading.value = true;
     await authApi.registerUser(registerForm);
-    navigateTo(localePath("/login"));
+    navigateTo(localePath('/login'));
   } catch (err) {
     console.log(err);
   } finally {
@@ -30,7 +30,7 @@ async function submit() {
 
 <template>
   <div>
-    <h1>For Register use below credentials</h1>
+    <h4>For Register use below credentials</h4>
     <pre>
     {
      email: eve.holt@reqres.in,
@@ -38,49 +38,33 @@ async function submit() {
     }
   </pre
     >
-    <a-form class="form" @finish="submit">
-      <label>
-        Enter your email:
-        <a-input
-          v-model:value="registerForm.email"
-          type="text"
+
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          id="exampleInputEmail2"
+          v-model="registerForm.email"
+          type="email"
+          class="form-control"
+          aria-describedby="emailHelp"
           placeholder="Enter Email"
         />
-      </label>
-      <br />
-      <label>
-        Enter your password:
-        <a-input
-          v-model:value="registerForm.password"
-          type="text"
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          id="exampleInputPassword2"
+          v-model="registerForm.password"
+          type="password"
+          class="form-control"
           placeholder="Enter Password"
         />
-      </label>
-      <br />
-      <a-button
-        :disabled="isRegisterLoading"
-        class="bg-blue-500 text-white py-1 px-2 mt-4"
-        type="primary"
-        html-type="submit"
-        @click.prevent="submit"
-      >
+      </div>
+      <button html-type="submit" class="btn btn-primary" :disabled="isRegisterLoading" @click.prevent="submit">
         <span v-if="isRegisterLoading">Loading...</span>
         <span v-else>Submit</span>
-      </a-button>
-    </a-form>
+      </button>
+    </form>
   </div>
 </template>
-
-<style>
-form {
-  width: 300px;
-}
-
-.form input {
-  margin-bottom: 12px;
-}
-
-.form button {
-  margin-bottom: 12px;
-}
-</style>
