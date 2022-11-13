@@ -1,9 +1,9 @@
-import * as authType from '~/types/authType';
+import * as authType from "~/types/authType";
 
-import { loginUser } from '~~/api/authApi';
+import { loginUser } from "~~/api/authApi";
 
 export const useAuthStore = defineStore(
-  'auth',
+  "auth",
   () => {
     /**
      * States
@@ -15,7 +15,7 @@ export const useAuthStore = defineStore(
     /**
      * initialize state from local storage to enable user to stay logged in
      */
-    const token = useCookie<string | null>('token');
+    const token = useCookie<string | null>("token");
 
     const userLogin = async (payload: authType.LoginParamsType): Promise<authType.LoginResponseType> => {
       isLoading.value = true;
@@ -32,7 +32,7 @@ export const useAuthStore = defineStore(
       /**
        * redirect to home page
        */
-      router.push('/user');
+      router.push("/user");
       return response;
     };
 
@@ -46,7 +46,7 @@ export const useAuthStore = defineStore(
       /**
        * redirect to login
        */
-      router.push('/login');
+      router.push("/login");
     };
 
     /**
@@ -63,5 +63,5 @@ export const useAuthStore = defineStore(
 );
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useCounterStore, import.meta.hot));
+  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot));
 }

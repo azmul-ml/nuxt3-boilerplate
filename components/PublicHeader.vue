@@ -15,11 +15,11 @@ function onChange(value: string) {
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <NuxtLink :to="localePath('/login')" class="color-dogerBlue nav-link">{{ $t('links.login') }}</NuxtLink>
+            <NuxtLink :to="localePath('/login')" class="color-dogerBlue nav-link">{{ $t("links.login") }}</NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink :to="localePath('/register')" class="color-dogerBlue nav-link">{{
-              $t('links.register')
+              $t("links.register")
             }}</NuxtLink>
           </li>
           <li class="nav-item dropdown">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as userApi from '~/api/userApi';
+import * as userApi from "~/api/userApi";
 
 const route = useRoute();
 const id = computed(() => route.params.id);
@@ -10,7 +10,7 @@ useHead({
 });
 
 definePageMeta({
-  middleware: ['auth'],
+  middleware: ["auth"],
 });
 
 const { data: user } = await useLazyAsyncData(`/users/${route.params.id}`, () => userApi.getUserById(route.params.id));
@@ -20,7 +20,7 @@ async function submit() {
   try {
     isUserUpdateLoading.value = true;
     await userApi.updateUser(route.params.id, user.value);
-    navigateTo('/user');
+    navigateTo("/user");
   } catch (err) {
     console.log(err);
   } finally {

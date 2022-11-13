@@ -20,5 +20,5 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import 'styles';
+@import "styles";
 </style>

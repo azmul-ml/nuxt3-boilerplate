@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from "pinia";
 
 useHead({
-  title: 'User List',
+  title: "User List",
 });
 
 definePageMeta({
-  middleware: ['auth'],
+  middleware: ["auth"],
 });
 
 const { userState, loading, errorState } = storeToRefs(useUsersStore());
@@ -16,7 +16,7 @@ fetchUsers();
 
 <template>
   <div style="margin: 20px">
-    <h1>{{ $t('pageTitle.users') }}</h1>
+    <h1>{{ $t("pageTitle.users") }}</h1>
     <button type="button" class="btn btn-primary" @click="navigateTo('/user/create')">Create User</button>
     <p v-if="loading">Loading posts...</p>
     <p v-if="errorState">{{ errorState.message }}</p>
