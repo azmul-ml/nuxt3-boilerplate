@@ -18,7 +18,7 @@ module.exports = {
   ],
 
   plugins: ["vue", "@typescript-eslint"],
-  ignorePatterns: ["**/assets/css/*"],
+  ignorePatterns: ["**/assets/css/bootstrap.min.css"],
   rules: {
     "vue/script-setup-no-uses-vars": "off",
     "vue/multi-word-component-names": "off",
