@@ -21,13 +21,10 @@ export const useUsersStore = defineStore(
       userState.users = [];
       loading.value = true;
 
-      try {
-        userState.users = await userApi.fetchUsers();
-      } catch (error: any) {
-        errorState.value = error;
-      } finally {
-        loading.value = false;
-      }
+      const { data, error, pending } = await userApi.fetchUsers();
+      userState.users = data?.value?.data;
+      errorState.value = error.value;
+      loading.value = pending.value;
     };
 
     return { userState, loading, errorState, fetchUsers, setUsers };

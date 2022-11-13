@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import * as userApi from "~/api/userApi";
+import * as userType from "~/types/userType";
 
 const route = useRoute();
 const id = computed(() => route.params.id);
 const isUserUpdateLoading = ref<boolean>(false);
+const user = ref<userType.UserType | null>(null);
 
 useHead({
   title: `User ${route.params.id} Details`,
@@ -13,7 +15,10 @@ definePageMeta({
   middleware: ["auth"],
 });
 
-const { data: user } = await useLazyAsyncData(`/users/${route.params.id}`, () => userApi.getUserById(route.params.id));
+onMounted(async () => {
+  const { data } = await userApi.getUserById(route.params.id);
+  user.value = data.value.data;
+});
 
 async function submit() {
   if (isUserUpdateLoading.value) return;

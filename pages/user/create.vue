@@ -25,6 +25,7 @@ async function submit() {
   if (isUserCreateLoading.value) return;
   try {
     isUserCreateLoading.value = true;
+    console.log(userForm);
     await userApi.createUser(userForm);
     navigateTo(localePath("/user"));
   } catch (err) {
@@ -52,7 +53,7 @@ async function submit() {
         <input v-model="userForm.last_name" type="text" class="form-control" placeholder="Enter Last Name" />
       </div>
       <div class="form-group">
-        <label for="exampleInputFirstName">Email Avatar:</label>
+        <label for="exampleInputFirstName">Avatar:</label>
         <input v-model="userForm.avatar" type="text" class="form-control" placeholder="Enter Avatar" />
       </div>
       <button :disabled="isUserCreateLoading" class="btn btn-primary" type="button" @click.prevent="submit">

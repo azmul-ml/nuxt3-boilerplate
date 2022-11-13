@@ -19,21 +19,21 @@ export const useAuthStore = defineStore(
 
     const userLogin = async (payload: authType.LoginParamsType): Promise<authType.LoginResponseType> => {
       isLoading.value = true;
-      const response = await loginUser(payload);
+      const { data, pending } = await loginUser(payload);
 
       /**
        * store auth details and jwt in local storage to keep user logged in
        * between page refreshes
        */
-      token.value = response.token;
+      token.value = data.value.token;
       isLoggedIn.value = true;
-      isLoading.value = false;
+      isLoading.value = pending;
 
       /**
        * redirect to home page
        */
       router.push("/user");
-      return response;
+      return data;
     };
 
     const logout = () => {
