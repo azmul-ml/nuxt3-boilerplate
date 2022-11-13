@@ -1,9 +1,7 @@
-import { $fetch, FetchOptions } from "ohmyfetch";
-
-const useApiHandler = (url: string, payload?: FetchOptions) => {
+const useApiHandler = async (subUrl: string, payload?: any) => {
   const { baseURL } = useRuntimeConfig();
 
-  const options: FetchOptions = {
+  const options = {
     headers: {
       Accept: "application/json",
       "Cache-Control": "no-cache",
@@ -11,7 +9,11 @@ const useApiHandler = (url: string, payload?: FetchOptions) => {
     ...payload,
   };
 
-  return $fetch(`${baseURL}${url}`, {
+  const URL = `${baseURL}${subUrl}`;
+
+  console.log(subUrl, options);
+
+  return await useFetch(URL, {
     ...options,
     async onResponse({}) {
       // request, response, options
@@ -33,22 +35,22 @@ const useApiHandler = (url: string, payload?: FetchOptions) => {
   });
 };
 
-export const useGet = (url: string, options?: FetchOptions) => {
-  return useApiHandler(url, options);
+export const useGet = (subUrl: string, options?: any) => {
+  return useApiHandler(subUrl, options);
 };
 
-export const usePost = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: "POST", body: { ...payload } });
+export const usePost = (subUrl: string, options: any, payload?: any) => {
+  return useApiHandler(subUrl, { method: "POST", ...options, body: { ...payload } });
 };
 
-export const usePut = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: "PUT", body: { ...payload } });
+export const usePut = (subUrl: string, options: any, payload?: any) => {
+  return useApiHandler(subUrl, { method: "PUT", ...options, body: { ...payload } });
 };
 
-export const usePatch = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: "PATCH", body: { ...payload } });
+export const usePatch = (subUrl: string, options: any, payload?: any) => {
+  return useApiHandler(subUrl, { method: "PATCH", ...options, body: { ...payload } });
 };
 
-export const useDelete = (url: string, payload?: any) => {
-  return useApiHandler(url, { method: "DELETE", body: { ...payload } });
+export const useDelete = (subUrl: string, payload?: any) => {
+  return useApiHandler(subUrl, { method: "DELETE", body: { ...payload } });
 };

@@ -6,10 +6,14 @@ import * as userType from "~/types/userType";
  *
  * @returns {id, email, first_name, last_name, avatar}
  */
-export const fetchUsers = async (): Promise<userType.UserType[]> => {
+export const fetchUsers = async (): Promise<any> => {
   try {
-    const res = await useGet(Endpoints.USERS);
-    return res.data;
+    const SUB_URL = Endpoints.USERS;
+    const options = {
+      key: `${SUB_URL}/users`,
+    };
+    const res = await useGet(SUB_URL, options);
+    return res;
   } catch (err) {
     return err;
   }
@@ -21,9 +25,13 @@ export const fetchUsers = async (): Promise<userType.UserType[]> => {
  * @param {email, first_name, last_name, avatar} user id, email, first_name, last_name, avatar
  * @returns {id, email, first_name, last_name, avatar}
  */
-export const createUser = async (payload: userType.CreateUserType): Promise<userType.UserType> => {
+export const createUser = async (payload: userType.CreateUserType): Promise<any> => {
   try {
-    const res = await usePost(Endpoints.USERS, payload);
+    const SUB_URL = Endpoints.USERS;
+    const options = {
+      key: `${SUB_URL}/create/${payload.email}`,
+    };
+    const res = await usePost(SUB_URL, options, payload);
     return res;
   } catch (err) {
     return err;
@@ -36,10 +44,14 @@ export const createUser = async (payload: userType.CreateUserType): Promise<user
  * @param {id} user id
  * @returns {id, email, first_name, last_name, avatar}
  */
-export const getUserById = async (id: string): Promise<userType.UserType> => {
+export const getUserById = async (id: string): Promise<any> => {
   try {
-    const res = await useGet(Endpoints.USERS + "/" + id);
-    return res.data;
+    const SUB_URL = Endpoints.USERS + "/" + id;
+    const options = {
+      key: SUB_URL,
+    };
+    const res = await useGet(SUB_URL, options);
+    return res;
   } catch (err) {
     return err;
   }
@@ -51,9 +63,13 @@ export const getUserById = async (id: string): Promise<userType.UserType> => {
  * @param {email, first_name, last_name, avatar} user id, email, first_name, last_name, avatar
  * @returns {id, email, first_name, last_name, avatar}
  */
-export const updateUser = async (id: string, payload: userType.CreateUserType): Promise<userType.UserType> => {
+export const updateUser = async (id: string, payload: userType.CreateUserType): Promise<any> => {
   try {
-    const res = await usePatch(`${Endpoints.USERS}/${id}`, payload);
+    const SUB_URL = Endpoints.USERS + "/" + id;
+    const options = {
+      key: `${SUB_URL}/update/${Math.random()}`,
+    };
+    const res = await usePatch(SUB_URL, options, payload);
     return res;
   } catch (err) {
     return err;

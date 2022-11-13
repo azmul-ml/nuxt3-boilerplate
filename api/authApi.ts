@@ -7,9 +7,13 @@ import * as authType from "~/types/authType";
  * @param {email, password} user email, password
  * @returns {id, token}
  */
-export const registerUser = async (payload: authType.RegisterParamsType): Promise<authType.RegisterResponseType> => {
+export const registerUser = async (payload: authType.RegisterParamsType): Promise<any> => {
   try {
-    const res = await usePost(Endpoints.AUTH_REGISTER, payload);
+    const SUB_URL = Endpoints.AUTH_REGISTER;
+    const options = {
+      key: `${SUB_URL}/register/${payload.email}`,
+    };
+    const res = await usePost(SUB_URL, options, payload);
     return res;
   } catch (err) {
     return err;
@@ -22,9 +26,13 @@ export const registerUser = async (payload: authType.RegisterParamsType): Promis
  * @param {email, password} user email, password
  * @returns {token}
  */
-export const loginUser = async (payload: authType.LoginParamsType): Promise<authType.LoginResponseType> => {
+export const loginUser = async (payload: authType.LoginParamsType): Promise<any> => {
   try {
-    const res = await usePost(Endpoints.AUTH_LOGIN, payload);
+    const SUB_URL = Endpoints.AUTH_LOGIN;
+    const options = {
+      key: `${SUB_URL}/login/${payload.email}`,
+    };
+    const res = await usePost(Endpoints.AUTH_LOGIN, options, payload);
     return res;
   } catch (err) {
     return err;
