@@ -34,6 +34,9 @@ function onChange(value: string) {
           <li class="nav-item">
             <a class="nav-link" href="#" @click="logout">Logout</a>
           </li>
+          <li class="nav-item">
+            <NuxtLink :to="localePath('/rendering')" class="color-dogerBlue nav-link">Rendering</NuxtLink>
+          </li>
           <li class="nav-item dropdown">
             <select v-model="selectedValue" class="nav-link dropdown-toggle" @change="onChange(selectedValue)">
               <option v-for="item in locales" :key="item.code" :value="item.code">
