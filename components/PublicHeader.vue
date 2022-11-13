@@ -14,7 +14,7 @@ function onChange(value: string) {
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <NuxtLink :to="localePath('/login')" class="color-dogerBlue nav-link">{{ $t("links.login") }}</NuxtLink>
           </li>
           <li class="nav-item">
