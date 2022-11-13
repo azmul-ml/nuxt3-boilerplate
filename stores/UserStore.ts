@@ -1,5 +1,5 @@
-import * as userType from '~/types/userType';
-import * as userApi from '~/api/userApi';
+import * as userType from "~/types/userType";
+import * as userApi from "~/api/userApi";
 
 export interface UserState {
   users: userType.UserType[] | undefined[];
@@ -8,7 +8,7 @@ export interface UserState {
 }
 
 export const useUsersStore = defineStore(
-  'UsersStore',
+  "UsersStore",
   () => {
     const userState = reactive({ users: [] as userType.UserType[] });
     const loading = ref(false);

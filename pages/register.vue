@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import * as authApi from '~/api/authApi';
-import * as authType from '~/types/authType';
+import * as authApi from "~/api/authApi";
+import * as authType from "~/types/authType";
 
 definePageMeta({
-  layout: 'public',
+  layout: "public",
 });
 
 const isRegisterLoading = ref<boolean>(false);
@@ -19,7 +19,7 @@ async function submit() {
   try {
     isRegisterLoading.value = true;
     await authApi.registerUser(registerForm);
-    navigateTo(localePath('/login'));
+    navigateTo(localePath("/login"));
   } catch (err) {
     console.log(err);
   } finally {

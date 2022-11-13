@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from "pinia";
 
-import * as authType from '~/types/authType';
+import * as authType from "~/types/authType";
 
 const authStore = useAuthStore();
 const { isLoading } = storeToRefs(authStore);
 const { userLogin } = authStore;
 useHead({
-  title: 'Login Page',
+  title: "Login Page",
 });
 
 definePageMeta({
-  layout: 'public',
+  layout: "public",
 });
 
 const loginForm = reactive<authType.LoginParamsType>({

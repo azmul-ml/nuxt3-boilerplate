@@ -1,16 +1,16 @@
 <script setup>
 useHead({
-  title: 'Nuxt Boilerplate',
+  title: "Nuxt Boilerplate",
 });
 
 definePageMeta({
-  middleware: ['auth'],
+  middleware: ["auth"],
 });
 </script>
 
 <template>
   <div>
     <LazyHomeWelcome />
-    <h3>{{ $t('pageTitle.home') }}</h3>
+    <h3>{{ $t("pageTitle.home") }}</h3>
   </div>
 </template>

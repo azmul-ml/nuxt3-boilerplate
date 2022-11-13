@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import * as userApi from '~/api/userApi';
-import * as userType from '~/types/userType';
+import * as userApi from "~/api/userApi";
+import * as userType from "~/types/userType";
 
 const isUserCreateLoading = ref<boolean>(false);
 
 useHead({
-  title: 'Create User',
+  title: "Create User",
 });
 
 definePageMeta({
-  middleware: ['auth'],
+  middleware: ["auth"],
 });
 
 const localePath = useLocalePath();
@@ -26,7 +26,7 @@ async function submit() {
   try {
     isUserCreateLoading.value = true;
     await userApi.createUser(userForm);
-    navigateTo(localePath('/user'));
+    navigateTo(localePath("/user"));
   } catch (err) {
     console.log(err);
   } finally {

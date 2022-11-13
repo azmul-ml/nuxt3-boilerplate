@@ -18,17 +18,17 @@ function onChange(value: string) {
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <NuxtLink v-if="authStore.token" :to="localePath('/user')" class="dogerBlue nav-link">
-              {{ $t('links.users') }}
+              {{ $t("links.users") }}
             </NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink v-if="authStore.token" :to="localePath('/about')" class="dogerBlue nav-link">
-              {{ $t('links.about') }}
+              {{ $t("links.about") }}
             </NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink v-if="authStore.token" :to="localePath('/profile')" class="dogerBlue nav-link">{{
-              $t('links.profile')
+              $t("links.profile")
             }}</NuxtLink>
           </li>
           <li class="nav-item">
@@ -48,7 +48,7 @@ function onChange(value: string) {
 </template>
 
 <style lang="scss" scoped>
-@import 'assets/sass/variables';
+@import "assets/sass/variables";
 .dogerBlue {
   color: $dogerBlue;
 }
