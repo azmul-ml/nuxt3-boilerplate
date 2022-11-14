@@ -5,7 +5,7 @@ const { logout } = useAuthStore();
 const { isLoggedIn } = storeToRefs(useAuthStore());
 
 const handleLogout = async () => {
-  await logout();
+  logout();
 };
 </script>
 

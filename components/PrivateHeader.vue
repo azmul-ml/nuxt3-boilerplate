@@ -13,27 +13,53 @@ function onChange(value: string) {
 
 <template>
   <div class="header">
-    <nav>
-      <NuxtLink v-if="authStore.token" :to="localePath('/')" class="pr-8">{{ $t("links.home") }}</NuxtLink>
-      <NuxtLink v-if="authStore.token" :to="localePath('/user')" class="pr-8">{{ $t("links.users") }}</NuxtLink>
-      <NuxtLink v-if="authStore.token" :to="localePath('/about')" class="pr-8">
-        {{ $t("links.about") }}
-      </NuxtLink>
-      <NuxtLink v-if="authStore.token" :to="localePath('/profile')" class="pr-8">{{ $t("links.profile") }}</NuxtLink>
-      <NuxtLink v-if="authStore.token" :to="localePath('/chart')" class="pr-8">{{ $t("links.charts") }}</NuxtLink>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <NuxtLink v-if="authStore.token" :to="localePath('/user')" class="dogerBlue nav-link">
+              {{ $t("links.users") }}
+            </NuxtLink>
+          </li>
+          <li class="nav-item">
+            <NuxtLink v-if="authStore.token" :to="localePath('/about')" class="dogerBlue nav-link">
+              {{ $t("links.about") }}
+            </NuxtLink>
+          </li>
+          <li class="nav-item">
+            <NuxtLink v-if="authStore.token" :to="localePath('/profile')" class="dogerBlue nav-link">{{
+              $t("links.profile")
+            }}</NuxtLink>
+          </li>
+          <li class="nav-item">
+            <NuxtLink v-if="authStore.token" :to="localePath('/chart')" class="dogerBlue nav-link">{{
+              $t("links.charts")
+            }}</NuxtLink>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" @click="logout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <NuxtLink :to="localePath('/rendering')" class="color-dogerBlue nav-link">Rendering</NuxtLink>
+          </li>
+          <li class="nav-item dropdown">
+            <select v-model="selectedValue" class="nav-link dropdown-toggle" @change="onChange(selectedValue)">
+              <option v-for="item in locales" :key="item.code" :value="item.code">
+                {{ item.name }}
+              </option>
+            </select>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <a-space>
-      <a-button v-if="authStore.token" class="pr-8" @click="logout">{{ $t("links.logout") }}</a-button>
-      <a-select v-model:value="selectedValue" @change="onChange(selectedValue)">
-        <a-select-option v-for="item in locales" :key="item.code" :value="item.code">
-          {{ item.name }}
-        </a-select-option>
-      </a-select>
-    </a-space>
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+@import "assets/sass/variables";
+.dogerBlue {
+  color: $dogerBlue;
+}
 nav {
   padding: 10px 0;
 }
