@@ -32,6 +32,11 @@ function onChange(value: string) {
             }}</NuxtLink>
           </li>
           <li class="nav-item">
+            <NuxtLink v-if="authStore.token" :to="localePath('/chart')" class="dogerBlue nav-link">{{
+              $t("links.charts")
+            }}</NuxtLink>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#" @click="logout">Logout</a>
           </li>
           <li class="nav-item">

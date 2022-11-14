@@ -4,6 +4,7 @@
     "home": "Home",
     "users": "Users",
     "profile": "Profile",
+    "charts": "Charts",
     "logout": "Logout",
     "register": "Register",
     "login": "Login"
@@ -12,6 +13,7 @@
     "home": "Home Page",
     "about": "About Page",
     "users": "All Users",
-    "profile": "Profile Page"
+    "profile": "Profile Page",
+    "charts": "Charts Page"
   }
 }
