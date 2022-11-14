@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import * as userApi from "~/api/userApi";
 import * as userType from "~/types/userType";
+import Error from "~/components/error";
+import { reactive } from "vue";
 
 const route = useRoute();
 const id = computed(() => route.params.id);
 const isUserUpdateLoading = ref<boolean>(false);
 const user = ref<userType.UserType | null>(null);
+const apiError = reactive<{ hasError: boolean; message: string } | null>({ hasError: false, message: "" });
 
 useHead({
   title: `User ${route.params.id} Details`,
@@ -16,8 +19,13 @@ definePageMeta({
 });
 
 onMounted(async () => {
-  const { data } = await userApi.getUserById(route.params.id);
-  user.value = data.value.data;
+  try {
+    const { data } = await userApi.getUserById(route.params.id);
+    user.value = data.value.data;
+  } catch (error) {
+    apiError.hasError = true;
+    apiError.message = "user fetching error";
+  }
 });
 
 async function submit() {
@@ -37,6 +45,7 @@ async function submit() {
 <template>
   <div>
     <h2>User {{ id }}</h2>
+    <Error v-if="apiError.hasError" :show-default-error="true" />
     <form v-if="user" @submit.prevent="submit">
       <div class="form-group">
         <label for="exampleInputEmail1">Enter your email:</label>

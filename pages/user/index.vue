@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import Error from "~/components/error";
 
 useHead({
   title: "User List",
@@ -21,5 +22,8 @@ fetchUsers();
     <p v-if="loading">Loading posts...</p>
     <p v-if="errorState">{{ errorState.message }}</p>
     <UserDetails class="mb-2" :users="userState.users" />
+    <Error v-if="errorState" :show-default-error="true">
+      <div>Custom error message: user fetching error</div>
+    </Error>
   </div>
 </template>
