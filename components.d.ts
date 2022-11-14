@@ -7,17 +7,6 @@ export {};
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    AAvatar: typeof import("ant-design-vue/es")["Avatar"];
-    AButton: typeof import("ant-design-vue/es")["Button"];
-    AForm: typeof import("ant-design-vue/es")["Form"];
-    AFormItem: typeof import("ant-design-vue/es")["FormItem"];
-    AInput: typeof import("ant-design-vue/es")["Input"];
-    AList: typeof import("ant-design-vue/es")["List"];
-    AListItem: typeof import("ant-design-vue/es")["ListItem"];
-    AListItemMeta: typeof import("ant-design-vue/es")["ListItemMeta"];
-    ASelect: typeof import("ant-design-vue/es")["Select"];
-    ASelectOption: typeof import("ant-design-vue/es")["SelectOption"];
-    ASpace: typeof import("ant-design-vue/es")["Space"];
     RouterLink: typeof import("vue-router")["RouterLink"];
     RouterView: typeof import("vue-router")["RouterView"];
   }

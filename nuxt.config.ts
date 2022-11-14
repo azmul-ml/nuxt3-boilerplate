@@ -28,12 +28,7 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    plugins: [
-      /* ... */
-      // Components({
-      //   resolvers: [AntDesignVueResolver()],
-      // }),
-    ],
+    plugins: [],
   },
   i18n: {
     locales: [
