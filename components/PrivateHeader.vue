@@ -20,7 +20,7 @@ function onChange(value: string) {
         {{ $t("links.about") }}
       </NuxtLink>
       <NuxtLink v-if="authStore.token" :to="localePath('/profile')" class="pr-8">{{ $t("links.profile") }}</NuxtLink>
-      <NuxtLink v-if="authStore.token" :to="localePath('/chart')" class="pr-8">{{ $t("links.chart") }}</NuxtLink>
+      <NuxtLink v-if="authStore.token" :to="localePath('/chart')" class="pr-8">{{ $t("links.charts") }}</NuxtLink>
     </nav>
     <a-space>
       <a-button v-if="authStore.token" class="pr-8" @click="logout">{{ $t("links.logout") }}</a-button>
