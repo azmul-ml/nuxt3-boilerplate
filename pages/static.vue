@@ -12,8 +12,9 @@ fetchUsers();
 
 <template>
   <div>
-    <h1>{{ $t("pageTitle.users") }}</h1>
-    <h2>{{ new Date() }}</h2>
+    <h2>Static Page</h2>
+    <h3>{{ new Date() }}</h3>
+    <h3>{{ $t("pageTitle.users") }}</h3>
     <p v-if="loading">Loading posts...</p>
     <p v-if="errorState">{{ errorState.message }}</p>
     <ul class="list-group">
