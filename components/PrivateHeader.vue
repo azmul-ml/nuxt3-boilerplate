@@ -42,6 +42,9 @@ function onChange(value: string) {
           <li class="nav-item">
             <NuxtLink :to="localePath('/rendering')" class="color-dogerBlue nav-link">Rendering</NuxtLink>
           </li>
+          <li class="nav-item">
+            <NuxtLink :to="localePath('/plugins')" class="color-dogerBlue nav-link">Plugins</NuxtLink>
+          </li>
           <li class="nav-item dropdown">
             <select v-model="selectedValue" class="nav-link dropdown-toggle" @change="onChange(selectedValue)">
               <option v-for="item in locales" :key="item.code" :value="item.code">
