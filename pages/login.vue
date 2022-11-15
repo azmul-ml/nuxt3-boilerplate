@@ -21,7 +21,21 @@ const loginForm = reactive<authType.LoginParamsType>({
   password: null,
 });
 
+/**
+ * validation starts here
+ */
+const rules = {
+  email: { required, email },
+  password: { required },
+};
+
+const v$ = useVuelidate(rules, loginForm);
+
 async function submit() {
+  const result = await v$.value.$validate();
+
+  if (!result) return;
+
   if (isLoading.value) return;
   try {
     isLoading.value = true;
@@ -32,16 +46,6 @@ async function submit() {
     isLoading.value = false;
   }
 }
-
-/**
- * validation starts here
- */
-const rules = {
-  email: { required, email },
-  password: { required },
-};
-
-const v$ = useVuelidate(rules, loginForm);
 </script>
 
 <template>

@@ -17,6 +17,10 @@ const registerForm = reactive<authType.RegisterParamsType>({
 });
 
 async function submit() {
+  const result = await v$.value.$validate();
+
+  if (!result) return;
+
   if (isRegisterLoading.value) return;
   try {
     isRegisterLoading.value = true;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useVuelidate } from "@vuelidate/core";
-import { required, email } from "@vuelidate/validators";
+import { required, email, helpers, minLength } from "@vuelidate/validators";
 import * as userApi from "~/api/userApi";
 import * as userType from "~/types/userType";
 
@@ -24,6 +24,10 @@ const userForm = reactive<userType.CreateUserType>({
 });
 
 async function submit() {
+  const result = await v$.value.$validate();
+
+  if (!result) return;
+
   if (isUserCreateLoading.value) return;
   try {
     isUserCreateLoading.value = true;
@@ -41,8 +45,8 @@ async function submit() {
  * validation starts here
  */
 const rules = {
-  email: { required, email },
-  first_name: { required },
+  email: { helpers: helpers.withMessage("Enter a valid email", required), email },
+  first_name: { helpers: helpers.withMessage("Enter your name", required) },
 };
 
 const v$ = useVuelidate(rules, userForm);
