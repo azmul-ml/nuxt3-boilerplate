@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { useVuelidate } from "@vuelidate/core";
+import { required, email } from "@vuelidate/validators";
 
 import * as authType from "~/types/authType";
 
@@ -30,6 +32,16 @@ async function submit() {
     isLoading.value = false;
   }
 }
+
+/**
+ * validation starts here
+ */
+const rules = {
+  email: { required, email },
+  password: { required },
+};
+
+const v$ = useVuelidate(rules, loginForm);
 </script>
 
 <template>
@@ -52,8 +64,13 @@ async function submit() {
           class="form-control"
           aria-describedby="emailHelp"
           placeholder="Enter Email"
+          @blur="v$.email.$touch"
         />
       </div>
+      <div v-for="error of v$.email.$errors" :key="error.$uid" class="input-errors">
+        <div class="error-msg">{{ error.$message }}</div>
+      </div>
+
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input
@@ -62,7 +79,11 @@ async function submit() {
           type="password"
           class="form-control"
           placeholder="Enter Password"
+          @blur="v$.password.$touch"
         />
+      </div>
+      <div v-for="error of v$.password.$errors" :key="error.$uid" class="input-errors">
+        <div class="error-msg">{{ error.$message }}</div>
       </div>
       <button type="submit" class="btn btn-primary" :disabled="isLoading" html-type="submit" @click.prevent="submit">
         <span v-if="isLoading">Loading...</span> <span v-else>Submit</span>

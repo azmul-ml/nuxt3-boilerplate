@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useVuelidate } from "@vuelidate/core";
+import { required, email } from "@vuelidate/validators";
 import * as userApi from "~/api/userApi";
 import * as userType from "~/types/userType";
 
@@ -34,6 +36,16 @@ async function submit() {
     isUserCreateLoading.value = false;
   }
 }
+
+/**
+ * validation starts here
+ */
+const rules = {
+  email: { required, email },
+  first_name: { required },
+};
+
+const v$ = useVuelidate(rules, userForm);
 </script>
 
 <template>
@@ -42,11 +54,23 @@ async function submit() {
     <form class="form" @finish="submit">
       <div class="form-group">
         <label for="exampleInputEmail1">Email:</label>
-        <input v-model="userForm.email" type="email" class="form-control" placeholder="Enter email" />
+        <input
+          v-model="userForm.email"
+          type="email"
+          class="form-control"
+          placeholder="Enter email"
+          @blur="v$.email.$touch"
+        />
+      </div>
+      <div v-for="error of v$.email.$errors" :key="error.$uid" class="input-errors" @blur="v$.first_name.$touch">
+        <div class="error-msg">{{ error.$message }}</div>
       </div>
       <div class="form-group">
         <label for="exampleInputFirstName">First Name:</label>
         <input v-model="userForm.first_name" type="text" class="form-control" placeholder="Enter First Name" />
+      </div>
+      <div v-for="error of v$.first_name.$errors" :key="error.$uid" class="input-errors">
+        <div class="error-msg">{{ error.$message }}</div>
       </div>
       <div class="form-group">
         <label for="exampleInputSecondName">Last Name:</label>
