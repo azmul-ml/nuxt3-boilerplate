@@ -16,7 +16,6 @@ fetchUsers();
 
 <template>
   <div>
-    <p v-if="loading">Loading posts...</p>
     <p v-if="errorState">{{ errorState.message }}</p>
     <!-- Recent Sales Start -->
     <div class="container-fluid pt-4 px-4">
@@ -26,11 +25,7 @@ fetchUsers();
           <button type="button" class="btn btn-primary" @click="navigateTo('/user/create')">Create User</button>
         </div>
         <div class="table-responsive">
-          <Loader :is-loader="loading" />
-          <table
-            v-if="userState.users.length > 0"
-            class="table text-start align-middle table-bordered table-hover mb-0"
-          >
+          <table class="table text-start align-middle table-bordered table-hover mb-0">
             <thead>
               <tr class="text-dark">
                 <th scope="col"><input class="form-check-input" type="checkbox" /></th>
@@ -40,7 +35,9 @@ fetchUsers();
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody>
+            <Loader :is-loader="loading" />
+
+            <tbody v-if="!loading && userState.users && userState.users.length > 0">
               <tr v-for="user in userState.users" :key="user.id">
                 <td><input class="form-check-input" type="checkbox" /></td>
                 <td>01 Jan 2045</td>
