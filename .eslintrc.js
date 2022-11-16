@@ -20,7 +20,6 @@ module.exports = {
   plugins: ["vue", "@typescript-eslint"],
   ignorePatterns: ["**/assets/css/*"],
   rules: {
-    "vue/script-setup-no-uses-vars": "off",
     "vue/multi-word-component-names": "off",
     "@typescript-eslint/no-explicit-any": "off",
   },
