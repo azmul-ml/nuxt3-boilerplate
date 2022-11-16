@@ -1,3 +1,19 @@
 <template>
-  <p>@Footer Section 2022</p>
+  <div>
+    <!-- Footer Start -->
+    <div class="container-fluid pt-4 px-4">
+      <div class="bg-light rounded-top p-4">
+        <div class="row">
+          <div class="col-12 col-sm-6 text-center text-sm-start">
+            &copy; <a href="#">MLBD NUXT3</a>, All Right Reserved.
+          </div>
+          <div class="col-12 col-sm-6 text-center text-sm-end">
+            Designed By <a href="#">MLBD</a> Distributed By
+            <a class="border-bottom" target="_blank">MLBD NUXT3 TEAM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+  </div>
 </template>

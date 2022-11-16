@@ -1,22 +1,9 @@
-<template>
-  <div>
-    <h1>Charts</h1>
-
-    <div class="charts">
-      <BarChart :labels="chartLabels" :data="chartData" />
-      <PieChart :labels="chartLabels" :data="chartData" />
-      <BubbleChart />
-    </div>
-  </div>
-</template>
-
 <script setup>
 import BubbleChart from "../utils/Charts/BubbleChart";
 import BarChart from "../utils/Charts/BarChart";
 import PieChart from "../utils/Charts/PieChart";
 
 definePageMeta({
-  layout: "custom",
   middleware: ["auth"],
 });
 
@@ -29,6 +16,18 @@ const chartData = [
   },
 ];
 </script>
+
+<template>
+  <div>
+    <h1>Charts</h1>
+
+    <div class="charts">
+      <BarChart :labels="chartLabels" :data="chartData" />
+      <PieChart :labels="chartLabels" :data="chartData" />
+      <BubbleChart />
+    </div>
+  </div>
+</template>
 
 <style>
 .charts {
