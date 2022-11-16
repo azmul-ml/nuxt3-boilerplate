@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
-const localePath = useLocalePath();
 const selectedValue = ref(locale);
 
 function onChange(value: string) {
