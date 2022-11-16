@@ -20,7 +20,7 @@ definePageMeta({
 onMounted(async () => {
   loading.value = true;
   const { data } = await userApi.getUserById(route.params.id);
-  user.value = data.value.data;
+  user.value = data.value?.data;
   loading.value = false;
 });
 

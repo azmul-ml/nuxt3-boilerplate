@@ -6,6 +6,10 @@ import * as authType from "~/types/authType";
 
 definePageMeta({
   layout: "public",
+  middleware: () => {
+    const { token } = useAuthStore();
+    if (token) navigateTo("/user");
+  },
 });
 
 const isRegisterLoading = ref<boolean>(false);

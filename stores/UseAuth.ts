@@ -11,7 +11,6 @@ export const useAuthStore = defineStore(
     const isLoading = ref(false);
     const isLoggedIn = ref(false);
 
-    const router = useRouter();
     /**
      * initialize state from local storage to enable user to stay logged in
      */
@@ -32,7 +31,7 @@ export const useAuthStore = defineStore(
       /**
        * redirect to home page
        */
-      router.push("/user");
+      navigateTo("/user");
       return data;
     };
 
@@ -46,7 +45,7 @@ export const useAuthStore = defineStore(
       /**
        * redirect to login
        */
-      router.push("/login");
+      navigateTo("/login");
     };
 
     /**
