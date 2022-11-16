@@ -1,13 +1,11 @@
 <template>
-  <div class="container">
-    <PrivateHeader />
-    <slot></slot>
-    <Footer />
+  <div>
+    <Sidebar />
+    <!-- Content Start -->
+    <div class="content">
+      <Navbar />
+      <slot></slot>
+      <Footer />
+    </div>
   </div>
 </template>
-
-<style>
-.container {
-  padding: 20px;
-}
-</style>

@@ -5,8 +5,11 @@
     "users": "ব্যবহারকারীদের",
     "profile": "প্রোফাইল",
     "login": "প্রবেশ করুন",
+    "charts": "চার্ট",
     "logout": "প্রস্থান",
-    "register": "নিবন্ধন"
+    "register": "নিবন্ধন",
+    "rendering": "রেন্ডারিং",
+    "plugin": "প্লাগইন"
   },
   "pageTitle": {
     "home": "হোম পেজ",

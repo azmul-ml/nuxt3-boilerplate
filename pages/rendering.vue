@@ -1,5 +1,5 @@
 <template>
-  <h3>Example</h3>
+  <h3>Rendering Example</h3>
   <ul class="list-group">
     <li class="list-group-item" aria-current="true">
       <NuxtLink to="/spa">SPA Page</NuxtLink>

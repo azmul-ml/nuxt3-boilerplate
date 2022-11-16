@@ -4,8 +4,26 @@ import ar from "./locales/ar.json";
 import bn from "./locales/bn-BD.json";
 
 export default defineNuxtConfig({
+  app: {
+    head: {
+      charset: "utf-16",
+      viewport: "width=500, initial-scale=1",
+      title: "My App",
+      meta: [{ name: "description", content: "MLBD Nuxt3 Boilerplate" }],
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css",
+        },
+      ],
+    },
+  },
   build: {},
-  css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css"],
+  css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css", "~/assets/css/style.css"],
   plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     "@nuxtjs/i18n",

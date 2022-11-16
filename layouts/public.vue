@@ -2,7 +2,6 @@
   <div class="container">
     <PublicHeader />
     <slot></slot>
-    <Footer />
   </div>
 </template>
 

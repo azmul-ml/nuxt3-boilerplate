@@ -6,8 +6,10 @@
     "profile": "Profile",
     "charts": "Charts",
     "logout": "Logout",
-    "register": "Register",
-    "login": "Login"
+    "register": "Sign Up",
+    "login": "Sign In",
+    "rendering": "Rendering",
+    "plugin": "Plugins"
   },
   "pageTitle": {
     "home": "Home Page",
