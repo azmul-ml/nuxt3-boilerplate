@@ -1,37 +1,27 @@
 <script setup lang="ts">
-import { StarFilled } from "@ant-design/icons-vue";
+const props = defineProps({
+  book: { type: Object, required: true },
+});
 </script>
 <template>
   <div class="book-list">
-    <img src="~/assets/images/elon.jpeg" />
+    <img :src="props.book.image" />
     <div class="des">
-      <h3>Elon Mask</h3>
-      <p>Ashlee Vance</p>
-      <star-filled />
-      <star-filled />
-      <star-filled />
-      <a-progress :percent="30" />
-    </div>
-  </div>
-  <div class="book-list">
-    <img src="~/assets/images/tools.jpeg" />
-    <div class="des">
-      <h3>Tools of Titans</h3>
-      <p>Team Feriss</p>
-      <star-filled />
-      <star-filled />
-      <star-filled />
-      <a-progress :percent="70" />
-    </div>
-  </div>
-  <div class="book-list">
-    <img src="~/assets/images/jen.jpeg" />
-    <div class="des">
-      <h3>You are a badass</h3>
-      <p>Jen Sincero</p>
-      <star-filled />
-      <star-filled />
-      <a-progress :percent="45" />
+      <h3>{{ props.book.name }}</h3>
+      <p>{{ props.book.description }}</p>
+      <div v-for="i in props.book.icon" :key="i" class="icons">
+        <i class="bi bi-star-fill"></i>
+      </div>
+      <div class="progress mt-2">
+        <div
+          class="progress-bar w-75"
+          role="progressbar"
+          aria-label="Basic example"
+          aria-valuenow="75"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,6 +45,10 @@ import { StarFilled } from "@ant-design/icons-vue";
   .des {
     line-height: 15px;
     width: 60%;
+
+    .icons {
+      display: contents;
+    }
   }
 }
 </style>

@@ -9,31 +9,48 @@
     <h2>Popular Now</h2>
     <p>See All</p>
   </div>
-  <a-carousel autoplay>
-    <div>
-      <img src="~/assets/images/tools.jpeg" />
-      <div class="img-des">
-        <h3>Zero to One</h3>
-        <p>Blake Masters & Peters</p>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div>
+          <img src="~/assets/images/tools.jpeg" class="d-block w-100" alt="a" />
+          <div class="img-des">
+            <h3>Zero to One</h3>
+            <p>Blake Masters & Peters</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div>
+          <img src="~/assets/images/elon.jpeg" class="d-block w-100" alt="elon" />
+          <div class="img-des">
+            <h3>Elon Musk</h3>
+            <p>Ashlee Vance</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div>
+          <img src="~/assets/images/jen.jpeg" class="d-block w-100" alt="jen" />
+          <div class="img-des">
+            <h3>You are a badass</h3>
+            <p>Jen sincero</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div>
-      <img src="~/assets/images/elon.jpeg" />
-      <div class="img-des">
-        <h3>Elon Musk</h3>
-        <p>Ashlee Vance</p>
-      </div>
-    </div>
-    <div>
-      <img src="~/assets/images/jen.jpeg" />
-      <div class="img-des">
-        <h3>You are a badass</h3>
-        <p>Jen sincero</p>
-      </div>
-    </div>
-  </a-carousel>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </template>
 <style lang="scss" scoped>
+@import "assets/sass/main.scss";
 h2 {
   margin-left: 15px;
   font-weight: 600;
@@ -89,5 +106,11 @@ img {
 .img-des {
   line-height: 15px;
   margin-top: 5px;
+}
+
+@include media-md {
+  h3 {
+    font-size: 20px;
+  }
 }
 </style>

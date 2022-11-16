@@ -10,6 +10,7 @@
   </div>
 </template>
 <style lang="scss" scoped>
+@import "assets/sass/main.scss";
 div {
   text-align: center;
 }
@@ -41,5 +42,15 @@ p {
   color: #015efc;
   padding: 10px 40px;
   border-radius: 19px;
+}
+@include media-md {
+  h3 {
+    font-size: 20px;
+  }
+  h1,
+  h2,
+  p {
+    line-height: 40px;
+  }
 }
 </style>

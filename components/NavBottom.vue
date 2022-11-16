@@ -1,15 +1,9 @@
-<script setup lang="ts">
-import {
-  HomeFilled,
-  ClockCircleFilled,
-  IdcardFilled,
-} from "@ant-design/icons-vue";
-</script>
+<script setup lang="ts"></script>
 <template>
   <div class="navbar">
-    <home-filled />
-    <clock-circle-filled />
-    <idcard-filled />
+    <i class="bi bi-house-door-fill"></i>
+    <i class="bi bi-clock-fill"></i>
+    <i class="bi bi-person-badge-fill"></i>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -24,7 +18,7 @@ import {
   background: white;
   border-top: 1px solid lightgray;
 
-  span {
+  i {
     color: gray;
 
     &:hover {
