@@ -9,10 +9,10 @@ definePageMeta({
 <template>
   <div>
     <NuxtLink :to="localePath('/user')"> &lt; Go Home Page</NuxtLink>
-    <h1>{{ $t("pageTitle.profile") }}</h1>
     <div class="bg-light rounded h-100 p-4">
       <div class="owl-carousel testimonial-carousel">
         <div class="testimonial-item text-center">
+          <h3>{{ $t("pageTitle.profile") }}</h3>
           <img
             class="img-fluid rounded-circle mx-auto mb-4"
             src="@/assets/images/user.png"
