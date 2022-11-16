@@ -9,7 +9,15 @@ export default defineNuxtConfig({
       charset: "utf-16",
       viewport: "width=500, initial-scale=1",
       title: "My App",
-      meta: [{ name: "description", content: "MLBD Nuxt3 Boilerplate" }],
+      meta: [
+        { name: "description", content: "MLBD Nuxt3 Boilerplate" },
+        {
+          hid: "og:image",
+          name: "og:image",
+          content:
+            "https://monstar-lab.com/global/wp-content/themes/monstar_lab_2021_theme/public/images/revamp/logo.png",
+        },
+      ],
       link: [
         {
           rel: "stylesheet",
@@ -21,9 +29,11 @@ export default defineNuxtConfig({
         },
       ],
     },
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
   build: {},
-  css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css", "~/assets/css/style.css"],
+  css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css"],
   plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     "@nuxtjs/i18n",
