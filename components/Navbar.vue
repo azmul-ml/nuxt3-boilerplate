@@ -1,11 +1,9 @@
 <script setup lang="ts">
 const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
-const route = useRoute();
 const selectedValue = ref(locale);
 const { logout } = useAuthStore();
 
-console.log(route);
 function onChange(value: string) {
   navigateTo(switchLocalePath(value));
 }
