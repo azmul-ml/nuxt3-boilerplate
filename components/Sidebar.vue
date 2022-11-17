@@ -25,6 +25,9 @@
           <Anchor to="/chart" class="nav-item nav-link"
             ><i class="fa fa-chart-bar me-2"></i> {{ $t("links.charts") }}</Anchor
           >
+          <Anchor to="/book" class="nav-item nav-link"
+            ><i class="fa fa-book-open me-2"></i> {{ $t("links.books") }}</Anchor
+          >
           <Anchor to="/rendering" class="nav-item nav-link"
             ><i class="fa fa-th me-2"></i>{{ $t("links.rendering") }}</Anchor
           >
