@@ -8,7 +8,7 @@ definePageMeta({
 
 <template>
   <div>
-    <NuxtLink :to="localePath('/user')"> &lt; Go Home Page</NuxtLink>
+    <Anchor :to="localePath('/user')"> &lt; Go Home Page</Anchor>
     <div class="bg-light rounded h-100 p-4">
       <div class="owl-carousel testimonial-carousel">
         <div class="testimonial-item text-center">

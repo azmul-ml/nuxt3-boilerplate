@@ -13,6 +13,6 @@ const increase = () => {
     <p v-font-size:large>text with large font size</p>
     <input v-focus placeholder="focused input" />
     <br />
-    <button v-if="!increasedSize" @click="increase">Increase size</button>
+    <Button v-if="!increasedSize" @click="increase">Increase size</Button>
   </div>
 </template>

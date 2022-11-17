@@ -110,20 +110,14 @@ async function submit() {
                   </div>
                   <a href="">Forgot Password</a>
                 </div>
-                <button
-                  type="submit"
-                  class="btn btn-primary py-3 w-100 mb-4"
-                  :disabled="isLoading"
-                  html-type="submit"
-                  @click.prevent="submit"
-                >
+                <Button type="submit" class="btn-primary py-3 w-100 mb-4" :disabled="isLoading" @click.prevent="submit">
                   <span v-if="isLoading">Signing...</span> <span v-else>Sign In</span>
-                </button>
+                </Button>
                 <p class="text-center mb-0">
                   Don't have an Account?
-                  <NuxtLink :to="localePath('/register')" class="color-dogerBlue nav-link">{{
+                  <Anchor :to="localePath('/register')" class="color-dogerBlue nav-link">{{
                     $t("links.register")
-                  }}</NuxtLink>
+                  }}</Anchor>
                 </p>
               </div>
             </div>

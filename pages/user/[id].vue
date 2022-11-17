@@ -93,10 +93,10 @@ const v$ = useVuelidate(rules, user);
                 <input v-model="user.avatar" type="text" class="form-control" placeholder="Enter Avatar" />
               </div>
 
-              <button :disabled="isUserUpdateLoading" type="submit" class="btn btn-primary">
+              <Button :disabled="isUserUpdateLoading" type="submit" class="btn-primary">
                 <span v-if="isUserUpdateLoading">Submitting...</span>
                 <span v-else>Submit</span>
-              </button>
+              </Button>
             </form>
           </div>
         </div>

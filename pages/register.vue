@@ -3,6 +3,7 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
+import { Button } from "~~/.nuxt/components";
 
 definePageMeta({
   layout: "public",
@@ -57,9 +58,9 @@ const v$ = useVuelidate(rules, registerForm);
           <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
             <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
               <div class="d-flex align-items-center justify-content-between mb-3">
-                <NuxtLink to="/">
+                <Anchor to="/">
                   <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>MLBD</h3>
-                </NuxtLink>
+                </Anchor>
                 <h3>Sign Up</h3>
               </div>
               <pre>
@@ -103,18 +104,18 @@ const v$ = useVuelidate(rules, registerForm);
                 </div>
                 <a href="">Forgot Password</a>
               </div>
-              <button
-                html-type="submit"
-                class="btn btn-primary py-3 w-100 mb-4"
+              <Button
+                type="submit"
+                class="btn-primary py-3 w-100 mb-4"
                 :disabled="isRegisterLoading"
                 @click.prevent="submit"
               >
                 <span v-if="isRegisterLoading">Loading...</span>
                 <span v-else>{{ $t("links.register") }}</span>
-              </button>
+              </Button>
               <p class="text-center mb-0">
                 Already have an Account?
-                <NuxtLink :to="localePath('/login')" class="color-dogerBlue nav-link">{{ $t("links.login") }}</NuxtLink>
+                <Anchor :to="localePath('/login')" class="color-dogerBlue nav-link">{{ $t("links.login") }}</Anchor>
               </p>
             </div>
           </div>
