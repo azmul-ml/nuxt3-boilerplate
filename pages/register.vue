@@ -3,8 +3,6 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 import * as authApi from "~/api/authApi";
 import * as authType from "~/types/authType";
-import { Button } from "~~/.nuxt/components";
-
 definePageMeta({
   layout: "public",
   middleware: () => {
@@ -12,20 +10,15 @@ definePageMeta({
     if (token) navigateTo("/user");
   },
 });
-
 const isRegisterLoading = ref<boolean>(false);
 const localePath = useLocalePath();
-
 const registerForm = reactive<authType.RegisterParamsType>({
   email: null,
   password: null,
 });
-
 async function submit() {
   const result = await v$.value.$validate();
-
   if (!result) return;
-
   if (isRegisterLoading.value) return;
   try {
     isRegisterLoading.value = true;
@@ -37,7 +30,6 @@ async function submit() {
     isRegisterLoading.value = false;
   }
 }
-
 /**
  * validation starts here
  */
@@ -45,7 +37,6 @@ const rules = {
   email: { required, email },
   password: { required },
 };
-
 const v$ = useVuelidate(rules, registerForm);
 </script>
 

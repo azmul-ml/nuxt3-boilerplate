@@ -4,7 +4,7 @@
       <span class="font-bold text-8xl block">{{ error.code }}</span>
       <span class="block italic">{{ error.message }}</span>
     </h1>
-    <Button text="Home" size="sm" @click="handleError" />
+    <Button text="Home" type="button" class="btn btn-primary" size="sm" @click="handleError" />
   </div>
 </template>
 
