@@ -1,4 +1,3 @@
-<script setup lang="ts"></script>
 <template>
   <div class="navbar">
     <i class="bi bi-house-door-fill"></i>

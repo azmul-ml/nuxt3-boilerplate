@@ -4,7 +4,7 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div class="book-list">
+  <figure class="book-list">
     <img :src="props.book.image" />
     <div class="des">
       <h3>{{ props.book.name }}</h3>
@@ -23,7 +23,7 @@ const props = defineProps({
         ></div>
       </div>
     </div>
-  </div>
+  </figure>
 </template>
 <style lang="scss" scoped>
 .book-list {

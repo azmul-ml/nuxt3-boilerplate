@@ -1,41 +1,34 @@
-<script setup lang="ts"></script>
 <template>
-  <div class="cover-div">
+  <article class="cover-div">
     <h1>Upcoming Book Fair</h1>
     <img src="~/assets/images/books.jpeg" />
     <button>Book</button>
-  </div>
-  <div class="popular-div">
+  </article>
+  <article class="popular-div">
     <h2>Popular Now</h2>
     <p>See All</p>
-  </div>
+  </article>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <div>
-          <img src="~/assets/images/tools.jpeg" class="d-block w-100" alt="a" />
-          <div class="img-des">
-            <h3>Zero to One</h3>
-            <p>Blake Masters & Peters</p>
-          </div>
+        <img src="~/assets/images/tools.jpeg" class="d-block w-100" alt="a" />
+        <div class="img-des">
+          <h3>Zero to One</h3>
+          <p>Blake Masters & Peters</p>
         </div>
       </div>
       <div class="carousel-item">
-        <div>
-          <img src="~/assets/images/elon.jpeg" class="d-block w-100" alt="elon" />
-          <div class="img-des">
-            <h3>Elon Musk</h3>
-            <p>Ashlee Vance</p>
-          </div>
+        <img src="~/assets/images/elon.jpeg" class="d-block w-100" alt="elon" />
+        <div class="img-des">
+          <h3>Elon Musk</h3>
+          <p>Ashlee Vance</p>
         </div>
       </div>
       <div class="carousel-item">
-        <div>
-          <img src="~/assets/images/jen.jpeg" class="d-block w-100" alt="jen" />
-          <div class="img-des">
-            <h3>You are a badass</h3>
-            <p>Jen sincero</p>
-          </div>
+        <img src="~/assets/images/jen.jpeg" class="d-block w-100" alt="jen" />
+        <div class="img-des">
+          <h3>You are a badass</h3>
+          <p>Jen sincero</p>
         </div>
       </div>
     </div>

@@ -23,7 +23,12 @@ export default defineNuxtConfig({
     },
   },
   build: {},
-  css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css", "~/assets/css/style.css"],
+  css: [
+    "~/assets/sass/main.scss",
+    "~/assets/css/bootstrap.min.css",
+    "~/assets/css/style.css",
+    "~/assets/sass/variables.scss",
+  ],
   plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     "@nuxtjs/color-mode",
