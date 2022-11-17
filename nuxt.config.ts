@@ -26,6 +26,7 @@ export default defineNuxtConfig({
   css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css", "~/assets/css/style.css"],
   plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
+    "@nuxtjs/color-mode",
     "@nuxtjs/i18n",
     [
       "@pinia/nuxt",
@@ -67,5 +68,9 @@ export default defineNuxtConfig({
     "/spa": { ssr: false },
     "/swr": { swr: true },
     "/static": { static: true },
+  },
+  colorMode: {
+    preference: "light",
+    fallback: "light",
   },
 });
