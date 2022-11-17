@@ -41,6 +41,12 @@ function onChange(value: string) {
             </option>
           </select>
         </div>
+        <div class="nav-item dropdown">
+          <select v-model="$colorMode.preference" class="nav-link dropdown-toggle">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
       </div>
     </nav>
     <!-- Navbar End -->
