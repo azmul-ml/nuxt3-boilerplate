@@ -31,7 +31,6 @@ async function submit() {
   if (isUserCreateLoading.value) return;
   try {
     isUserCreateLoading.value = true;
-    console.log(userForm);
     await userApi.createUser(userForm);
     navigateTo(localePath("/user"));
   } catch (err) {
@@ -96,10 +95,10 @@ const v$ = useVuelidate(rules, userForm);
                 <input v-model="userForm.avatar" type="text" class="form-control" placeholder="Enter Avatar" />
               </div>
 
-              <button :disabled="isUserCreateLoading" class="btn btn-primary" type="button" @click.prevent="submit">
+              <Button :disabled="isUserCreateLoading" class="btn btn-primary" type="button" @click.prevent="submit">
                 <span v-if="isUserCreateLoading">Submiting...</span>
                 <span v-else>Submit</span>
-              </button>
+              </Button>
             </form>
           </div>
         </div>

@@ -9,9 +9,9 @@ const props = defineProps({
     <a class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">
-          <NuxtLink :to="`/user/${user?.id}`" class="dmsans-regular">
+          <Anchor :to="`/user/${user?.id}`" class="dmsans-regular">
             {{ user?.first_name }} {{ user?.last_name }}
-          </NuxtLink>
+          </Anchor>
         </h5>
         <small>{{ user.id }} days ago</small>
       </div>

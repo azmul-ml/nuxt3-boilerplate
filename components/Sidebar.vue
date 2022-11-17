@@ -3,9 +3,9 @@
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
       <nav class="navbar bg-light navbar-light">
-        <NuxtLink to="/" class="navbar-brand mx-4 mb-3">
+        <Anchor to="/" class="navbar-brand mx-4 mb-3">
           <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>MLBD</h3>
-        </NuxtLink>
+        </Anchor>
         <div class="d-flex align-items-center ms-4 mb-4">
           <div class="position-relative">
             <img class="rounded-circle" src="@/assets/images/user.png" alt="" style="width: 40px; height: 40px" />
@@ -19,24 +19,24 @@
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <NuxtLink to="/user" class="nav-item nav-link"
-            ><i class="fa fa-tachometer-alt me-2"></i> {{ $t("links.users") }}</NuxtLink
+          <Anchor to="/user" class="nav-item nav-link"
+            ><i class="fa fa-tachometer-alt me-2"></i> {{ $t("links.users") }}</Anchor
           >
-          <NuxtLink to="/chart" class="nav-item nav-link"
-            ><i class="fa fa-chart-bar me-2"></i> {{ $t("links.charts") }}</NuxtLink
+          <Anchor to="/chart" class="nav-item nav-link"
+            ><i class="fa fa-chart-bar me-2"></i> {{ $t("links.charts") }}</Anchor
           >
-          <NuxtLink to="/rendering" class="nav-item nav-link"
-            ><i class="fa fa-th me-2"></i>{{ $t("links.rendering") }}</NuxtLink
+          <Anchor to="/rendering" class="nav-item nav-link"
+            ><i class="fa fa-th me-2"></i>{{ $t("links.rendering") }}</Anchor
           >
-          <NuxtLink to="/plugins" class="nav-item nav-link"
-            ><i class="fa fa-keyboard me-2"></i>{{ $t("links.plugin") }}</NuxtLink
+          <Anchor to="/plugins" class="nav-item nav-link"
+            ><i class="fa fa-keyboard me-2"></i>{{ $t("links.plugin") }}</Anchor
           >
-          <NuxtLink to="/about" class="nav-item nav-link"
-            ><i class="fa fa-tachometer-alt me-2"></i> {{ $t("links.about") }}</NuxtLink
+          <Anchor to="/about" class="nav-item nav-link"
+            ><i class="fa fa-tachometer-alt me-2"></i> {{ $t("links.about") }}</Anchor
           >
-          <NuxtLink to="/profile" class="nav-item nav-link"
+          <Anchor to="/profile" class="nav-item nav-link"
             ><i class="fa fa-table me-2"></i>{{ $t("links.profile") }}
-          </NuxtLink>
+          </Anchor>
         </div>
       </nav>
     </div>

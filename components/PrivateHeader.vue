@@ -17,33 +17,33 @@ function onChange(value: string) {
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <NuxtLink v-if="authStore.token" :to="localePath('/user')" class="dogerBlue nav-link">
+            <Anchor v-if="authStore.token" :to="localePath('/user')" class="dogerBlue nav-link">
               {{ $t("links.users") }}
-            </NuxtLink>
+            </Anchor>
           </li>
           <li class="nav-item">
-            <NuxtLink v-if="authStore.token" :to="localePath('/about')" class="dogerBlue nav-link">
+            <Anchor v-if="authStore.token" :to="localePath('/about')" class="dogerBlue nav-link">
               {{ $t("links.about") }}
-            </NuxtLink>
+            </Anchor>
           </li>
           <li class="nav-item">
-            <NuxtLink v-if="authStore.token" :to="localePath('/profile')" class="dogerBlue nav-link">{{
+            <Anchor v-if="authStore.token" :to="localePath('/profile')" class="dogerBlue nav-link">{{
               $t("links.profile")
-            }}</NuxtLink>
+            }}</Anchor>
           </li>
           <li class="nav-item">
-            <NuxtLink v-if="authStore.token" :to="localePath('/chart')" class="dogerBlue nav-link">{{
+            <Anchor v-if="authStore.token" :to="localePath('/chart')" class="dogerBlue nav-link">{{
               $t("links.charts")
-            }}</NuxtLink>
+            }}</Anchor>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" @click="logout">Logout</a>
           </li>
           <li class="nav-item">
-            <NuxtLink :to="localePath('/rendering')" class="color-dogerBlue nav-link">Rendering</NuxtLink>
+            <Anchor :to="localePath('/rendering')" class="color-dogerBlue nav-link">Rendering</Anchor>
           </li>
           <li class="nav-item">
-            <NuxtLink :to="localePath('/plugins')" class="color-dogerBlue nav-link">Plugins</NuxtLink>
+            <Anchor :to="localePath('/plugins')" class="color-dogerBlue nav-link">Plugins</Anchor>
           </li>
           <li class="nav-item dropdown">
             <select v-model="selectedValue" class="nav-link dropdown-toggle" @change="onChange(selectedValue)">
