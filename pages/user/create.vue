@@ -24,17 +24,13 @@ const userForm = reactive<userType.CreateUserType>({
 });
 
 async function submit() {
-  console.log(isUserCreateLoading.value);
-
   const result = await v$.value.$validate();
 
   if (!result) return;
 
   if (isUserCreateLoading.value) return;
   try {
-    console.log(isUserCreateLoading.value);
     isUserCreateLoading.value = true;
-    console.log(userForm);
     await userApi.createUser(userForm);
     navigateTo(localePath("/user"));
   } catch (err) {
