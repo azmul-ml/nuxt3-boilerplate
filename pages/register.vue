@@ -7,7 +7,7 @@ definePageMeta({
   layout: "public",
   middleware: () => {
     const { token } = useAuthStore();
-    if (token) navigateTo("/user");
+    if (token) navigateTo("/");
   },
 });
 const isRegisterLoading = ref<boolean>(false);
