@@ -10,24 +10,22 @@ export interface UserState {
 export const useUsersStore = defineStore(
   "UsersStore",
   () => {
-    const userState = reactive({ users: [] as userType.UserType[] });
+    const userState = ref({ users: [] as userType.UserType[] });
     const loading = ref(false);
     const errorState = ref<any>(null);
 
-    const setUsers = (data: userType.UserType[]) => {
-      userState.users = data;
-    };
     const fetchUsers = async () => {
-      userState.users = [];
+      userState.value.users = [];
       loading.value = true;
 
-      const { data, error, pending } = await userApi.fetchUsers();
-      userState.users = data?.value?.data;
+      const res = await userApi.fetchUsers();
+      const { data, error, pending } = res;
+      userState.value.users = data?.value?.data;
       errorState.value = error.value;
       loading.value = pending.value;
     };
 
-    return { userState, loading, errorState, fetchUsers, setUsers };
+    return { userState, loading, errorState, fetchUsers };
   },
   {
     persist: {

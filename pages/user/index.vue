@@ -8,9 +8,11 @@ useHead({
 definePageMeta({
   middleware: ["auth"],
 });
+const userStore = useUsersStore();
 
-const { userState, loading, errorState } = storeToRefs(useUsersStore());
-const { fetchUsers } = useUsersStore();
+const { loading } = storeToRefs(userStore);
+const { userState, errorState } = storeToRefs(userStore);
+const { fetchUsers } = userStore;
 fetchUsers();
 </script>
 
@@ -37,7 +39,7 @@ fetchUsers();
             </thead>
             <Loader :is-loader="loading" />
 
-            <tbody v-if="!loading && userState.users && userState.users.length > 0">
+            <tbody v-if="!loading">
               <tr v-for="user in userState.users" :key="user.id">
                 <td><input class="form-check-input" type="checkbox" /></td>
                 <td>01 Jan 2045</td>
