@@ -5,9 +5,73 @@
 }
 
 @font-face {
-  font-family: 'DMsans-Regular';
+  font-family: "DMsans-Regular";
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src: url('assets/fonts/DMSans-Regular.ttf') format('truetype');
+  src: url("assets/fonts/DMSans-Regular.ttf") format("truetype");
+}
+.dark-mode body {
+  background-color: $bgDarkSecondary !important;
+  color: $textColorDark;
+}
+
+.dark-mode {
+  .sidebar,
+  .navbar,
+  .nav-link,
+  table,
+  .text-dark,
+  .list-group,
+  .list-group-item {
+    background-color: $bgDarkPrimary !important;
+    color: $textColorDark !important;
+  }
+  .content {
+    background-color: $bgDarkSecondary;
+    color: $textColorDark !important;
+    .bg-light {
+      background-color: $bgDarkPrimary !important;
+    }
+  }
+
+  .container-xxl {
+    background-color: $bgDarkSecondary;
+    color: $textColorDark !important;
+    .row {
+      background-color: $bgDarkSecondary;
+    }
+    .bg-light {
+      background-color: $bgDarkPrimary !important;
+    }
+  }
+  .table-hover > tbody > tr:hover,
+  .sidebar .navbar .navbar-nav .nav-link:hover {
+    background-color: $bgDarkHover !important;
+    color: $textColorDark !important;
+  }
+  .form-control {
+    background-color: $textColorDark;
+  }
+  .btn-primary {
+    background-color: $primaryDark;
+    border-color: $primaryDark;
+    &:hover {
+      background-color: $primaryDarkHover;
+      border-color: $primaryDarkHover;
+    }
+  }
+
+  a {
+    color: $primaryDark;
+    &:hover {
+      color: $primaryDarkHover;
+    }
+  }
+  .text-primary {
+    color: $primaryDark !important;
+  }
+  .form-floating > label {
+    color: $bgDarkSecondary;
+  }
 }

@@ -52,6 +52,12 @@ function onChange(value: string) {
               </option>
             </select>
           </li>
+          <li class="nav-item dropdown mx-3">
+            <select v-model="$colorMode.preference" class="nav-link dropdown-toggle">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </li>
         </ul>
       </div>
     </nav>
