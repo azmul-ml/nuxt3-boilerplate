@@ -888,7 +888,7 @@
     unimport "^0.7.0"
     untyped "^0.5.0"
 
-"@nuxt/kit@^3.0.0-rc.14", "@nuxt/kit@^3.0.0-rc.9":
+"@nuxt/kit@^3.0.0-rc.9":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.0.0.tgz#ae49b4e27b15285556cb88f35a56309c5ca0dd79"
   integrity sha512-7ZsOLt5s9a0ZleAIzmoD70JwkZf5ti6bDdxl6f8ew7Huxz+ni/oRfTPTX9TrORXsgW5CvDt6Q9M7IJNPkAN/Iw==
@@ -1148,6 +1148,15 @@
     vite-node "^0.25.2"
     vite-plugin-checker "^0.5.1"
     vue-bundle-renderer "^1.0.0"
+
+"@nuxtjs/color-mode@^3.1.8":
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.1.8.tgz#58f3e5401028fe0c75088e9d2fdc5c7778d2b720"
+  integrity sha512-ahgjmSzpjTpaxvyyGA/1wD2rNcSFXiqs3/A/GEllB1s4BboJVnBIqkwIQpAguq7IDVZG2tMAvqmnZHSfwrI3IA==
+  dependencies:
+    "@nuxt/kit" "^3.0.0-rc.9"
+    lodash.template "^4.5.0"
+    pathe "^0.3.5"
 
 "@nuxtjs/color-mode@^3.1.8":
   version "3.1.8"
@@ -7424,10 +7433,10 @@ ufo@^1.0.0:
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.0.0.tgz#eb64f4c8797d6aa6c710a836abab0bade9d11ca6"
   integrity sha512-DRty0ZBNlJ2R59y4mEupJRKLbkLQsc4qtxjpQv78AwEDuBkaUogMc2LkeqW3HddFlw6NwnXYfdThEZOiNgkmmQ==
 
-ultrahtml@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ultrahtml/-/ultrahtml-1.0.1.tgz#ed7fd8c1046ae36d176e320772132dd48f73a864"
-  integrity sha512-VDt8gmBR5DPrsfdLS4GQqncojcsLTKMW6iHKVN9l6TohU5bdn/OPv8AmV/0/PBR7Z3qBmMpJHqxRdQFaFA8B9g==
+ultrahtml@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/ultrahtml/-/ultrahtml-0.4.0.tgz#d421eefc3263460c68b5a5ec6a8105825925db38"
+  integrity sha512-pnJXeIWo9gu7ftQLsMii4Se9kWOzyuH63EDsOsFKwP9XTdLG+QI+JUUxXFSAlCJ/frcdmjfE6kSvvCKiGmiakg==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
@@ -7453,6 +7462,11 @@ unctx@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/unctx/-/unctx-2.1.0.tgz#14cd10e5150e2588e88f94775e7509908f853ed8"
   integrity sha512-Q3UdS5IAlVRIWsWDd8Rr9g2zqBAZaecBgQ+XXFiKbZzovDMMTEU+Ki0SAVf/ZgWsoeG0/c1kzO2/k6BVhbkUHw==
+  dependencies:
+    acorn "^8.8.1"
+    estree-walker "^3.0.1"
+    magic-string "^0.26.7"
+    unplugin "^1.0.0"
   dependencies:
     acorn "^8.8.1"
     estree-walker "^3.0.1"
@@ -7518,7 +7532,7 @@ unimport@^0.7.0:
     strip-literal "^0.4.2"
     unplugin "^0.10.2"
 
-unimport@^1.0.0, unimport@^1.0.1:
+unimport@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/unimport/-/unimport-1.0.1.tgz#7d3f865f0d4577e9b93adcd1292f67a676e80359"
   integrity sha512-SEPKl3uyqUvi6c0MnyCmUF9H07CuC9j9p2p33F03LmegU0sxjpnjL0fLKAhh7BTfcKaJKj+1iOiAFtg7P3m5mQ==
@@ -7596,10 +7610,11 @@ unplugin@^1.0.0:
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.6"
 
-unstorage@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-1.0.1.tgz#8cac09e435e727f68ac8ffdac10caa1a5b35883d"
-  integrity sha512-J1c4b8K2KeihHrQtdgl/ybIapArUbPaPb+TyJy/nGSauDwDYqciZsEKdkee568P3c8SSH4TIgnGRHDWMPGw+Lg==
+unstorage@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-0.6.0.tgz#9a70d770d08ed8dbb87f4aa5fbf7700baf4a641d"
+  integrity sha512-X05PIq28pVNA1BypX6Y00YNqAsHM25MGemvpjHeYvwJ8/wg936GoO1YD+VdWlqm3LmVX4fNJ5tlC7uhXsMPgeg==
+
   dependencies:
     anymatch "^3.1.2"
     chokidar "^3.5.3"
