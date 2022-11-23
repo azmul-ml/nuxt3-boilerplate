@@ -1,5 +1,5 @@
 const useApiHandler = async (subUrl: string, payload?: any) => {
-  const { baseURL } = useRuntimeConfig();
+  const config = useRuntimeConfig();
 
   const options = {
     headers: {
@@ -9,7 +9,7 @@ const useApiHandler = async (subUrl: string, payload?: any) => {
     ...payload,
   };
 
-  const URL = `${baseURL}${subUrl}`;
+  const URL = `${config.public.baseUrl}${subUrl}`;
 
   return await useFetch(URL, {
     ...options,
