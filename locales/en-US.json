@@ -5,6 +5,7 @@
     "users": "Users",
     "profile": "Profile",
     "charts": "Charts",
+    "books": "Books",
     "logout": "Logout",
     "register": "Sign Up",
     "login": "Sign In",
@@ -16,6 +17,7 @@
     "about": "About Page",
     "users": "All Users",
     "profile": "Profile Page",
-    "charts": "Charts Page"
+    "charts": "Charts Page",
+    "books": "Books Page"
   }
 }
