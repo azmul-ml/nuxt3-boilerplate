@@ -8,7 +8,8 @@
     <h2>Popular Now</h2>
     <p>See All</p>
   </article>
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <CarouselItem />
+  <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="~/assets/images/tools.jpeg" class="d-block w-100" alt="a" />
@@ -40,7 +41,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+  </div> -->
 </template>
 <style lang="scss" scoped>
 @import "assets/sass/main.scss";
