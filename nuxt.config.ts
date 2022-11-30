@@ -23,8 +23,8 @@ export default defineNuxtConfig({
     },
   },
   build: {},
-  css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css", "~/assets/css/style.css"],
-  plugins: ["~/plugins/pinia-plugin-persist.client"],
+  css: ["~/assets/css/style.css"],
+  // plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     "@nuxtjs/color-mode",
     "@nuxtjs/i18n",
@@ -37,9 +37,6 @@ export default defineNuxtConfig({
   ],
   imports: {
     dirs: ["stores", "helpers"],
-  },
-  publicRuntimeConfig: {
-    baseURL: process.env.API_BASE_URL || "https://reqres.in",
   },
   runtimeConfig: {
     public: {
