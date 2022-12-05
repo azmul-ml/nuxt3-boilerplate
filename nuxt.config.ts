@@ -22,12 +22,21 @@ export default defineNuxtConfig({
       ],
     },
   },
-  build: {},
-  css: ["~/assets/sass/main.scss", "~/assets/css/bootstrap.min.css", "~/assets/css/style.css"],
+  build: {
+    transpile: ["vuetify"],
+  },
+  css: [
+    "~/assets/sass/main.scss",
+    "~/assets/css/bootstrap.min.css",
+    "~/assets/css/style.css",
+    "vuetify/styles/main.sass",
+    "@mdi/font/css/materialdesignicons.min.css",
+  ],
   plugins: ["~/plugins/pinia-plugin-persist.client"],
   modules: [
     "@nuxtjs/color-mode",
     "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
     [
       "@pinia/nuxt",
       {
