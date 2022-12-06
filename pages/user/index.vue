@@ -36,14 +36,22 @@ fetchUsers();
               </tr>
             </thead>
             <Loader :is-loader="loading" />
-
-            <tbody v-if="!loading && userState.users && userState.users.length > 0">
+            <tbody v-if="!loading && userState?.users?.length > 0">
               <tr v-for="user in userState.users" :key="user.id">
                 <td><input class="form-check-input" type="checkbox" /></td>
                 <td>01 Jan 2045</td>
                 <td>{{ user.first_name }} {{ user.last_name }}</td>
                 <td>{{ user.email }}</td>
                 <td><Anchor :to="`/user/${user?.id}`" class="btn btn-sm btn-primary">Detail</Anchor></td>
+              </tr>
+            </tbody>
+            <tbody v-if="!loading && errorState">
+              <tr>
+                <td colspan="5" class="text-center">
+                  <Error v-if="errorState" :show-default-error="true">
+                    <div>Custom error message: user fetching error</div>
+                  </Error>
+                </td>
               </tr>
             </tbody>
           </table>
