@@ -28,6 +28,8 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/color-mode",
     "@nuxtjs/i18n",
+    "nuxt-headlessui",
+    "@nuxtjs/tailwindcss",
     [
       "@pinia/nuxt",
       {
